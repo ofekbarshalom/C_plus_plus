@@ -7,7 +7,6 @@ This repository contains my university C++ exercises and projects.
 - `Ex1/` - First exercise and its content.
 - `Ex2/` - Second exercise and its content.
 - `LICENSE` - Project licensed under the MIT License.
-- `Instructions.md` - Exercise instructions provided by the university.
 
 ## 📜 License
 
