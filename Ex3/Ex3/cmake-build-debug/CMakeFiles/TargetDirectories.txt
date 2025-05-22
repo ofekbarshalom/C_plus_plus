@@ -1,3 +1,0 @@
-C:/Users/ofekb/CLionProjects/Ex3/cmake-build-debug/CMakeFiles/Ex3.dir
-C:/Users/ofekb/CLionProjects/Ex3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/ofekb/CLionProjects/Ex3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
