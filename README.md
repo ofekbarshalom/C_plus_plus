@@ -4,9 +4,11 @@ This repository contains my university C++ exercises and projects.
 
 ## 📁 Structure
 
-- `Ex1/` - First exercise and its content.
-- `Ex2/` - Second exercise and its content.
-- `Ex3/` - Third exercise and its content.
+- `Ex1/` - First exercise in system programming course.
+- `Ex2/` - Second exercise in system programming course.
+- `Ex3/` - Third exercise in system programming course.
+- `OS_Ex1/` - First exercise in operating systems course.
+- `OS_Ex2/` - Second exercise in operating systems course.
 - `LICENSE` - Project licensed under the MIT License.
 
 ## 📜 License
