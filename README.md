@@ -2,7 +2,7 @@
 
 This repository contains my university C++ exercises and projects.
 
-## 📁 Structure
+## Structure
 
 - `Ex1/` - First exercise in system programming course.
 - `Ex2/` - Second exercise in system programming course.
@@ -11,7 +11,7 @@ This repository contains my university C++ exercises and projects.
 - `OS_Ex2/` - Second exercise in operating systems course.
 - `LICENSE` - Project licensed under the MIT License.
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License.  
 See the [LICENSE](./LICENSE) file for more information.
