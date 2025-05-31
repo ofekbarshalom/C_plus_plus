@@ -1,0 +1,73 @@
+File '/usr/include/c++/14/bits/new_allocator.h'
+Lines executed:88.89% of 9
+Creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_function.h'
+Lines executed:75.00% of 4
+Creating 'stl_function.h.gcov'
+
+File '/usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h'
+Lines executed:100.00% of 1
+Creating 'c++config.h.gcov'
+
+File '/usr/include/c++/14/bits/basic_string.tcc'
+Lines executed:48.89% of 135
+Creating 'basic_string.tcc.gcov'
+
+File '/usr/include/c++/14/bits/basic_string.h'
+Lines executed:44.33% of 194
+Creating 'basic_string.h.gcov'
+
+File '/usr/include/c++/14/bits/move.h'
+Lines executed:53.33% of 30
+Creating 'move.h.gcov'
+
+File '/usr/include/c++/14/bits/allocator.h'
+Lines executed:58.33% of 12
+Creating 'allocator.h.gcov'
+
+File '/usr/include/c++/14/bits/alloc_traits.h'
+Lines executed:66.67% of 6
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/ptr_traits.h'
+Lines executed:100.00% of 6
+Creating 'ptr_traits.h.gcov'
+
+File '/usr/include/c++/14/ext/alloc_traits.h'
+Lines executed:50.00% of 2
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_iterator_base_types.h'
+Lines executed:100.00% of 1
+Creating 'stl_iterator_base_types.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_iterator_base_funcs.h'
+Lines executed:100.00% of 3
+Creating 'stl_iterator_base_funcs.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_construct.h'
+Lines executed:0.00% of 6
+Creating 'stl_construct.h.gcov'
+
+File '/usr/include/c++/14/bits/char_traits.h'
+Lines executed:17.65% of 85
+Creating 'char_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/charconv.h'
+Lines executed:0.00% of 26
+Creating 'charconv.h.gcov'
+
+File 'moleculeRequester.cpp'
+Lines executed:46.97% of 66
+Creating 'moleculeRequester.cpp.gcov'
+
+File '/usr/include/c++/14/new'
+Lines executed:0.00% of 3
+Creating 'new.gcov'
+
+File '/usr/include/c++/14/type_traits'
+Lines executed:100.00% of 2
+Creating 'type_traits.gcov'
+
+Lines executed:42.30% of 591

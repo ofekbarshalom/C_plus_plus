@@ -1,0 +1,61 @@
+File '/usr/include/c++/14/bits/new_allocator.h'
+Lines executed:0.00% of 9
+Creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_function.h'
+Lines executed:75.00% of 4
+Creating 'stl_function.h.gcov'
+
+File '/usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h'
+Lines executed:100.00% of 1
+Creating 'c++config.h.gcov'
+
+File '/usr/include/c++/14/bits/move.h'
+Lines executed:0.00% of 16
+Creating 'move.h.gcov'
+
+File '/usr/include/c++/14/bits/basic_string.tcc'
+Lines executed:30.43% of 46
+Creating 'basic_string.tcc.gcov'
+
+File '/usr/include/c++/14/bits/basic_string.h'
+Lines executed:20.00% of 80
+Creating 'basic_string.h.gcov'
+
+File '/usr/include/c++/14/bits/allocator.h'
+Lines executed:0.00% of 12
+Creating 'allocator.h.gcov'
+
+File '/usr/include/c++/14/bits/alloc_traits.h'
+Lines executed:0.00% of 3
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/ptr_traits.h'
+Lines executed:0.00% of 6
+Creating 'ptr_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/char_traits.h'
+Lines executed:0.00% of 45
+Creating 'char_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_construct.h'
+Lines executed:0.00% of 2
+Creating 'stl_construct.h.gcov'
+
+File 'atomSupplierMain.cpp'
+Lines executed:84.62% of 26
+Creating 'atomSupplierMain.cpp.gcov'
+
+File 'atomSupplier.hpp'
+No executable lines
+Removing 'atomSupplier.hpp.gcov'
+
+File '/usr/include/c++/14/new'
+Lines executed:0.00% of 3
+Creating 'new.gcov'
+
+File '/usr/include/c++/14/type_traits'
+Lines executed:0.00% of 2
+Creating 'type_traits.gcov'
+
+Lines executed:21.96% of 255

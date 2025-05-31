@@ -1,0 +1,53 @@
+File '/usr/include/c++/14/bits/move.h'
+Lines executed:0.00% of 12
+Creating 'move.h.gcov'
+
+File '/usr/include/c++/14/bits/new_allocator.h'
+Lines executed:0.00% of 12
+Creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/14/ext/aligned_buffer.h'
+Lines executed:0.00% of 4
+Creating 'aligned_buffer.h.gcov'
+
+File '/usr/include/c++/14/bits/ptr_traits.h'
+Lines executed:0.00% of 6
+Creating 'ptr_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/stl_pair.h'
+No executable lines
+Removing 'stl_pair.h.gcov'
+
+File '/usr/include/c++/14/bits/hashtable_policy.h'
+Lines executed:0.00% of 25
+Creating 'hashtable_policy.h.gcov'
+
+File '/usr/include/c++/14/bits/alloc_traits.h'
+Lines executed:0.00% of 2
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/14/bits/allocator.h'
+Lines executed:0.00% of 2
+Creating 'allocator.h.gcov'
+
+File '/usr/include/c++/14/bits/hashtable.h'
+Lines executed:0.00% of 21
+Creating 'hashtable.h.gcov'
+
+File '/usr/include/c++/14/bits/basic_string.h'
+No executable lines
+Removing 'basic_string.h.gcov'
+
+File 'atomWarehouseMain.cpp'
+Lines executed:60.00% of 5
+Creating 'atomWarehouseMain.cpp.gcov'
+
+File 'atomWarehouse.hpp'
+No executable lines
+Removing 'atomWarehouse.hpp.gcov'
+
+File '/usr/include/c++/14/bits/unordered_map.h'
+No executable lines
+Removing 'unordered_map.h.gcov'
+
+Lines executed:3.37% of 89

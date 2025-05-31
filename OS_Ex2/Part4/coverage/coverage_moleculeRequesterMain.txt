@@ -1,0 +1,25 @@
+File '/usr/include/c++/14/bits/new_allocator.h'
+Lines executed:0.00% of 1
+Creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/14/bits/move.h'
+Lines executed:0.00% of 2
+Creating 'move.h.gcov'
+
+File '/usr/include/c++/14/bits/basic_string.h'
+No executable lines
+Removing 'basic_string.h.gcov'
+
+File '/usr/include/c++/14/bits/allocator.h'
+No executable lines
+Removing 'allocator.h.gcov'
+
+File 'moleculeRequesterMain.cpp'
+Lines executed:83.33% of 18
+Creating 'moleculeRequesterMain.cpp.gcov'
+
+File 'moleculeRequester.hpp'
+No executable lines
+Removing 'moleculeRequester.hpp.gcov'
+
+Lines executed:71.43% of 21
