@@ -20,7 +20,6 @@ struct ClientState {
     vector<string> pendingLines;
 };
 
-unordered_map<int, string> clientBuffers;  // fd -> text buffer
 unordered_map<int, ClientState> clientStates;
 
 void parsePoint(const string& str, double& x, double& y) {
@@ -123,7 +122,6 @@ int main() {
                     setNonBlocking(newfd);
                     FD_SET(newfd, &master_set);
                     if (newfd > fdmax) fdmax = newfd;
-                    clientBuffers[newfd] = "";
                     cout << "New client connected: " << newfd << endl;
                 }
             } else {
@@ -132,17 +130,13 @@ int main() {
                 if (bytes <= 0) {
                     close(fd);
                     FD_CLR(fd, &master_set);
-                    clientBuffers.erase(fd);
                     clientStates.erase(fd);
                     cout << "Client " << fd << " disconnected.\n";
                 } else {
-                    clientBuffers[fd] += string(buf, bytes);
-                    size_t pos;
-                    while ((pos = clientBuffers[fd].find('\n')) != string::npos) {
-                        string line = clientBuffers[fd].substr(0, pos);
-                        clientBuffers[fd].erase(0, pos + 1);
-                        handleLine(fd, line);
-                    }
+                    string line(buf, bytes);
+                    line.erase(remove(line.begin(), line.end(), '\r'), line.end());
+                    line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+                    handleLine(fd, line);
                 }
             }
         }
