@@ -1,16 +1,15 @@
-# 🧠 OS - Exercise 3: Convex Hull Server with Reactor Pattern
+# OS - Exercise 3: Convex Hull Server
 
-This project implements a **multi-client TCP server** that processes geometric commands (like computing the Convex Hull area) using a **reactor-based event loop**.
+This project implements a **multi-client TCP server** that processes geometric commands (like computing the Convex Hull area)
 
-## 🚀 Features
+## Features
 
-- Supports multiple concurrent TCP clients (non-blocking I/O via `select()`)
+- Supports multiple concurrent TCP clients
 - Handles geometric commands: `Newgraph`, `Newpoint`, `Removepoint`, `CH`
 - Computes the convex hull using Andrew’s Monotone Chain algorithm
 - Returns convex hull area per client request
-- Modular C++ design with clear separation of logic
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -22,7 +21,7 @@ This project implements a **multi-client TCP server** that processes geometric c
 ├── Makefile                    # Build script
 ```
 
-## 💬 Supported Commands (via TCP socket)
+## Supported Commands (via TCP socket)
 
 | Command             | Description                                 |
 |---------------------|---------------------------------------------|
@@ -33,13 +32,13 @@ This project implements a **multi-client TCP server** that processes geometric c
 
 Each command must be sent **as a full line ending with `\n`**.
 
-## ⚙️ How to Build
+## How to Build
 
 ```bash
 make
 ```
 
-## 🧪 How to Run
+## How to Run
 
 ```bash
 make run
@@ -47,7 +46,7 @@ make run
 
 The server will listen on port **9034**.
 
-## 🔄 Example Interaction
+## Example Interaction
 
 You can test the server using `netcat`:
 
@@ -65,19 +64,13 @@ Newgraph 3
 CH
 ```
 
-## 🧹 Clean Build
+## Clean Build
 
 ```bash
 make clean
 ```
 
-## 📦 Dependencies
+## Dependencies
 
 - C++20
 - Linux or WSL (POSIX sockets and `select()`)
-
-## 🔧 Known Limitations
-
-- No thread safety (single-threaded reactor)
-- Assumes each client sends one complete command per line
-- Minimal error handling
