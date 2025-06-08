@@ -13,12 +13,18 @@ This project implements a **multi-client TCP server** that processes geometric c
 
 ```
 .
-├── ConvexHullVector.cpp/.hpp   # Convex Hull (vector implementation)
-├── ConvexHullDeque.cpp/.hpp    # (optional) deque-based alternative
-├── Point.hpp                   # 2D point representation
-├── Reactor.cpp/.hpp            # Reactor pattern implementation
-├── Server_Reactor.cpp          # Main server logic (entry point)
-├── Makefile                    # Build script
+├── Part1/
+├── Part2/
+├── Part3/
+├── Part4/
+├── Part5/
+├── Part6/
+├── Part7/
+├── Part8/
+├── Part9/
+├── Part10/
+├── makefile    # Top-level Makefile that builds all parts
+└── README.md
 ```
 
 ## Supported Commands (via TCP socket)
