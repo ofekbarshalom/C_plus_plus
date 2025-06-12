@@ -35,8 +35,10 @@ int main() {
         // Find Eulerian circuit
         vector<int> circuit = algo.findEulerianCircuit();
         cout << "Eulerian Circuit: ";
-        for (int v : circuit) {
-            cout << v << " ";
+        for (size_t i = 0; i < circuit.size(); ++i) {
+            cout << circuit[i];
+            if (i != circuit.size() - 1)
+                cout << " -> ";
         }
         cout << endl;
     } else {

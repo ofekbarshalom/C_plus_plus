@@ -1,4 +1,5 @@
 #include "GraphAlgorithms.hpp" 
+#include "Graph.hpp"
 #include <vector>
 #include <stack>
 #include <set>
@@ -57,42 +58,50 @@ bool GraphAlgorithms::isEulerian() const {
     return true;
 }
 
+//  Uses Hierholzer's algorithm
 vector<int> GraphAlgorithms::findEulerianCircuit() const {
     vector<int> circuit;
 
-    // First check if the graph is Eulerian
     if (!isEulerian()) {
         cout << "Eulerian circuit does not exist.\n";
         return circuit;
     }
 
-    // Create a copy of adjacency list to modify
-    vector<multiset<int>> tempAdj(graph.getVertexCount());
-    for (int u = 0; u < graph.getVertexCount(); ++u) {
-        for (const Edge& e : graph.getNeighbors(u)) {
-            tempAdj[u].insert(e.dst);
-        }
-    }
+    // Create copy of adjacency list
+    vector<vector<Edge>> tempAdj = graph.getAdjList();
 
-    stack<int> stack;
-    stack.push(0);  // Start from any vertex
+    stack<int> s;
+    s.push(0);
 
-    while (!stack.empty()) {
-        int u = stack.top();
+    while (!s.empty()) {
+        int u = s.top();
+
         if (tempAdj[u].empty()) {
             circuit.push_back(u);
-            stack.pop();
+            s.pop();
         } else {
-            int v = *tempAdj[u].begin();
-            tempAdj[u].erase(tempAdj[u].begin());
-            tempAdj[v].erase(tempAdj[v].find(u));
-            stack.push(v);
+            // Get next neighbor
+            Edge e = tempAdj[u].back();
+            tempAdj[u].pop_back();
+
+            // Remove reverse edge manually
+            int v = e.dst;
+            auto& adjV = tempAdj[v];
+            for (auto it = adjV.begin(); it != adjV.end(); ++it) {
+                if (it->dst == u) {
+                    adjV.erase(it);
+                    break;
+                }
+            }
+
+            s.push(v);
         }
     }
 
     reverse(circuit.begin(), circuit.end());
     return circuit;
 }
+
 
 
 } // namespace GraphAlgo

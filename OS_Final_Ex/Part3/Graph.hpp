@@ -38,6 +38,8 @@ public:
     void printGraph() const;
     int getVertexCount() const;
     const vector<Edge>& getNeighbors(int v) const;
+    const vector<vector<Edge>>& getAdjList() const { return adjList; }
+
 };
 
 } // namespace GraphAlgo
