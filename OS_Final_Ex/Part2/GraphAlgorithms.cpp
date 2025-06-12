@@ -71,7 +71,14 @@ vector<int> GraphAlgorithms::findEulerianCircuit() const {
     vector<vector<Edge>> tempAdj = graph.getAdjList();
 
     stack<int> s;
-    s.push(0);
+    int start = 0;
+    for (int i = 0; i < tempAdj.size(); i++) {
+        if (!tempAdj[i].empty()) {
+            start = i;
+            break;
+        }
+    }
+    s.push(start);
 
     while (!s.empty()) {
         int u = s.top();
