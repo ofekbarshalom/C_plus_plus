@@ -15,7 +15,7 @@ Creating 'stl_construct.h.gcov'
 File '/usr/include/c++/14/bits/stl_vector.h'
 Lines executed:56.49% of 462
 Branches executed:53.66% of 82
-Taken at least once:29.27% of 82
+Taken at least once:28.05% of 82
 Calls executed:50.25% of 201
 Creating 'stl_vector.h.gcov'
 
@@ -79,10 +79,10 @@ Calls executed:20.00% of 90
 Creating 'stl_algobase.h.gcov'
 
 File 'main.cpp'
-Lines executed:94.00% of 50
-Branches executed:97.14% of 70
-Taken at least once:62.86% of 70
-Calls executed:91.11% of 45
+Lines executed:100.00% of 40
+Branches executed:100.00% of 68
+Taken at least once:67.65% of 68
+Calls executed:93.18% of 44
 Creating 'main.cpp.gcov'
 
 File 'Graph.hpp'
@@ -183,10 +183,10 @@ Calls executed:100.00% of 5
 Creating 'stl_stack.h.gcov'
 
 File 'GraphAlgorithms.cpp'
-Lines executed:92.73% of 55
+Lines executed:92.59% of 54
 Branches executed:97.56% of 82
 Taken at least once:58.54% of 82
 Calls executed:90.91% of 66
 Creating 'GraphAlgorithms.cpp.gcov'
 
-Lines executed:61.20% of 2062
+Lines executed:61.14% of 2051

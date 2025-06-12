@@ -29,6 +29,6 @@ analyze_build: clean
 analyze_report:
 	gcov -b main.cpp Graph.cpp GraphAlgorithms.cpp > coverage_report.txt
 	gprof main gmon.out > gprof_report.txt
-	-valgrind --leak-check=full ./main -v 5 -e 10 -s 123 2> valgrind_memcheck.txt
-	-valgrind --tool=callgrind ./main -v 5 -e 10 -s 123
+	-valgrind --leak-check=full ./main -v 1000 -e 3000 -s 123 2> valgrind_memcheck.txt
+	-valgrind --tool=callgrind ./main -v 1000 -e 3000 -s 123
 	callgrind_annotate callgrind.out.* > callgraph.txt

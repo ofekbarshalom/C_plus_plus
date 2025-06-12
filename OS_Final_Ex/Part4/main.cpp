@@ -21,18 +21,10 @@ int main(int argc, char* argv[]) {
     int opt;
     while ((opt = getopt(argc, argv, "v:e:s:")) != -1) {
         switch (opt) {
-            case 'v':
-                vertices = atoi(optarg);
-                break;
-            case 'e':
-                edges = atoi(optarg);
-                break;
-            case 's':
-                seed = atoi(optarg);
-                break;
-            default:
-                print_usage();
-                return 1;
+            case 'v': vertices = atoi(optarg); break;
+            case 'e': edges = atoi(optarg); break;
+            case 's': seed = atoi(optarg); break;
+            default: print_usage(); return 1;
         }
     }
 
@@ -47,34 +39,29 @@ int main(int argc, char* argv[]) {
     }
 
     srand(seed);
-    Graph g(vertices, false);
+    Graph g(vertices, false); // false = undirected
 
     set<pair<int, int>> used_edges;
     while (used_edges.size() < static_cast<size_t>(edges)) {
-    int u = rand() % vertices;
-    int v = rand() % vertices;
-    if (u == v) continue;
-    if (used_edges.count({min(u, v), max(u, v)})) continue;
+        int u = rand() % vertices;
+        int v = rand() % vertices;
+        if (u == v) continue;
+        if (used_edges.count({min(u, v), max(u, v)})) continue;
 
-    g.addEdge(u, v);
-    used_edges.insert({min(u, v), max(u, v)});
+        g.addEdge(u, v);
+        used_edges.insert({min(u, v), max(u, v)});
     }
-
 
     cout << "Generated random graph:" << endl;
     g.printGraph();
 
-    GraphAlgorithms algo(g);
-
-    if (algo.isEulerian()) {
+    if (isEulerian(g)) {
         cout << "The graph is Eulerian!" << endl;
-
-        vector<int> circuit = algo.findEulerianCircuit();
+        vector<int> circuit = findEulerianCircuit(g);
         cout << "Eulerian Circuit: ";
         for (size_t i = 0; i < circuit.size(); ++i) {
             cout << circuit[i];
-            if (i != circuit.size() - 1)
-                cout << " -> ";
+            if (i != circuit.size() - 1) cout << " -> ";
         }
         cout << endl;
     } else {

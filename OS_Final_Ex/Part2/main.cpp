@@ -25,15 +25,12 @@ int main() {
     cout << "Graph structure:" << endl;
     g.printGraph();
 
-    // Create algorithms object
-    GraphAlgorithms algo(g);
-
     // Check if Eulerian
-    if (algo.isEulerian()) {
+    if (isEulerian(g)) {
         cout << "The graph is Eulerian!" << endl;
 
         // Find Eulerian circuit
-        vector<int> circuit = algo.findEulerianCircuit();
+        vector<int> circuit = findEulerianCircuit(g);
         cout << "Eulerian Circuit: ";
         for (size_t i = 0; i < circuit.size(); ++i) {
             cout << circuit[i];
