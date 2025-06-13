@@ -3,6 +3,9 @@
 #include <vector>
 #include <stack>
 #include <set>
+#include <tuple>      
+#include <numeric>    
+#include <functional> 
 #include <algorithm>
 #include <iostream>
 
@@ -99,5 +102,41 @@ vector<int> findEulerianCircuit(const Graph& graph) {
     reverse(circuit.begin(), circuit.end());
     return circuit;
 }
+
+
+// ========= Find MST Weight =========
+int findMSTWeight(const Graph& g) {
+    int n = g.getVertexCount();
+    vector<vector<Edge>> adj = g.getAdjList();
+    vector<tuple<int, int, int>> edges;
+
+    for (int u = 0; u < n; ++u) {
+        for (const Edge& e : adj[u]) {
+            if (u < e.dst)  // avoid duplicates in undirected graph
+                edges.emplace_back(e.weight, u, e.dst);
+        }
+    }
+
+    sort(edges.begin(), edges.end());
+
+    vector<int> parent(n);
+    iota(parent.begin(), parent.end(), 0);
+
+    function<int(int)> find = [&](int u) {
+        return parent[u] == u ? u : parent[u] = find(parent[u]);
+    };
+
+    int mstWeight = 0;
+    for (auto [w, u, v] : edges) {
+        int pu = find(u), pv = find(v);
+        if (pu != pv) {
+            parent[pu] = pv;
+            mstWeight += w;
+        }
+    }
+
+    return mstWeight;
+}
+
 
 } // namespace GraphAlgo
