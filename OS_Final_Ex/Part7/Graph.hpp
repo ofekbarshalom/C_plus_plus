@@ -9,9 +9,10 @@ using namespace std;
 namespace GraphAlgo {
 
 struct Edge {
+    int src;
     int dst;
     int weight;
-    Edge(int destination, int w) : dst(destination), weight(w) {}
+    Edge(int s, int d, int w) : src(s), dst(d), weight(w) {}
 };
 
 class Graph {

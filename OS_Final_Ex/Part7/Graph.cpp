@@ -24,9 +24,9 @@ Graph& Graph::operator=(const Graph& other) {
 
 //=============== Methods ===============
 void Graph::addEdge(int src, int dst, int weight) {
-    adjList[src].emplace_back(dst, weight);
+    adjList[src].emplace_back(src, dst, weight);
     if (!directed) {
-        adjList[dst].emplace_back(src, weight);
+        adjList[dst].emplace_back(dst, src, weight);
     }
 }
 

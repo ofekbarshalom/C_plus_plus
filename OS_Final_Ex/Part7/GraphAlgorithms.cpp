@@ -10,6 +10,8 @@ using namespace std;
 
 namespace GraphAlgo {
 
+// ========= Find Euler circle =========
+
 // Internal DFS used by isEulerian
 static void dfsUtil(const Graph& graph, int v, vector<bool>& visited) {
     visited[v] = true;
@@ -84,7 +86,7 @@ vector<int> findEulerianCircuit(const Graph& graph) {
             int v = e.dst;
             auto& adjV = tempAdj[v];
             for (auto it = adjV.begin(); it != adjV.end(); ++it) {
-                if (it->dst == u) {
+                if (it->dst == u && it->src == v) {
                     adjV.erase(it);
                     break;
                 }
