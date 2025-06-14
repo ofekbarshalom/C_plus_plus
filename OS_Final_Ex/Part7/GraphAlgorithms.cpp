@@ -209,7 +209,7 @@ vector<vector<int>> findSCC(const Graph& graph) {
 
     // Second DFS using reversed graph
     visited.assign(n, false);
-    vector<std::vector<int>> components;
+    vector<vector<int>> components;
 
     while (!finishOrder.empty()) {
         int v = finishOrder.top();
@@ -225,9 +225,9 @@ vector<vector<int>> findSCC(const Graph& graph) {
 //---------------------------------------------------------
 
 // Build adjacency set for fast lookup
-std::vector<std::set<int>> buildAdjacencySet(const Graph& graph) {
+vector<set<int>> buildAdjacencySet(const Graph& graph) {
     int n = graph.getVertexCount();
-    std::vector<std::set<int>> adjSet(n);
+    vector<set<int>> adjSet(n);
 
     for (int u = 0; u < n; ++u) {
         for (const Edge& e : graph.getNeighbors(u)) {
@@ -238,11 +238,11 @@ std::vector<std::set<int>> buildAdjacencySet(const Graph& graph) {
 }
 
 // Bron Kerbosch recursive function
-void bronKerbosch(const std::vector<std::set<int>>& adjSet, 
-                  std::vector<int>& R, 
-                  std::set<int>& P, 
-                  std::set<int>& X, 
-                  std::vector<int>& maxClique) {
+void bronKerbosch(const vector<set<int>>& adjSet, 
+                  vector<int>& R, 
+                  set<int>& P, 
+                  set<int>& X, 
+                  vector<int>& maxClique) {
     
     if (P.empty() && X.empty()) {
         if (R.size() > maxClique.size())
@@ -253,7 +253,7 @@ void bronKerbosch(const std::vector<std::set<int>>& adjSet,
     int pivot = -1;
     if (!P.empty()) pivot = *P.begin();
 
-    std::set<int> candidates;
+    set<int> candidates;
     for (int v : P) {
         if (pivot == -1 || adjSet[pivot].count(v) == 0) {
             candidates.insert(v);
@@ -263,12 +263,12 @@ void bronKerbosch(const std::vector<std::set<int>>& adjSet,
     for (int v : candidates) {
         R.push_back(v);
 
-        std::set<int> newP;
+        set<int> newP;
         for (int u : P) {
             if (adjSet[v].count(u)) newP.insert(u);
         }
 
-        std::set<int> newX;
+        set<int> newX;
         for (int u : X) {
             if (adjSet[v].count(u)) newX.insert(u);
         }
@@ -283,16 +283,16 @@ void bronKerbosch(const std::vector<std::set<int>>& adjSet,
 
 vector<int> findMaxClique(const Graph& graph) {
     int n = graph.getVertexCount();
-    vector<std::set<int>> adjSet = buildAdjacencySet(graph);
+    vector<set<int>> adjSet = buildAdjacencySet(graph);
 
-    std::vector<int> R;
-    std::set<int> P, X;
+    vector<int> R;
+    set<int> P, X;
 
     for (int i = 0; i < n; ++i) {
         P.insert(i);
     }
 
-    std::vector<int> maxClique;
+    vector<int> maxClique;
     bronKerbosch(adjSet, R, P, X, maxClique);
     return maxClique;
 }
