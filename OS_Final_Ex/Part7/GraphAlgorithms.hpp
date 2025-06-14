@@ -10,7 +10,12 @@ namespace GraphAlgo {
 
     bool isEulerian(const Graph& g);
     vector<int> findEulerianCircuit(const Graph& g);
-    int findMSTWeight(const Graph& g);
+
+    // ====== 4 Algorithms ======
+    int findMSTWeight(const Graph& graph);              // Finding MST weight
+    vector<vector<int>> findSCC(const Graph& graph);    // Finding SCC on the graph
+    vector<int> findMaxClique(const Graph& graph);      // Finding max clique
+    int findMaxFlow(const Graph& graph);                // Finding max flow between node 0 (source) and node (n-1)
 
 } // namespace GraphAlgo
 
