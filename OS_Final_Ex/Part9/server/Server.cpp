@@ -1,16 +1,17 @@
 #include <iostream>
-#include <cstring>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <netinet/in.h>
 #include <thread>
+#include <netinet/in.h>
 #include <unistd.h>
+#include <cstring>
+#include <sstream>
 #include <random>
 #include <set>
-#include "../core/Graph.hpp"
+#include <vector>               
+#include <utility>              
+#include "BlockingQueue.hpp"
+#include "PipelineData.hpp"
 #include "../core/GraphAlgorithms.hpp"
-#include "ActiveObject.hpp"  // <-- Include your new header
+#include "../core/Graph.hpp"
 
 using namespace std;
 using namespace GraphAlgo;
@@ -18,10 +19,12 @@ using namespace GraphAlgo;
 #define PORT 8080
 #define MAX_BUFFER 4096
 
-// Pipeline stages
-shared_ptr<ActiveObject<shared_ptr<Request>>> mstStage, sccStage, cliqueStage, maxFlowStage, finalStage;
+// Create blocking queues
+BlockingQueue<PipelineData> queueMST;
+BlockingQueue<PipelineData> queueSCC;
+BlockingQueue<PipelineData> queueClique;
+BlockingQueue<PipelineData> queueMaxFlow;
 
-// TCP-safe readLine function
 string readLine(int client_socket) {
     string line;
     char c;
@@ -34,70 +37,140 @@ string readLine(int client_socket) {
     return line;
 }
 
-Graph readGraphFromClient(int client_socket) {
-    string firstLine = readLine(client_socket);
-    istringstream ss(firstLine);
-    int v, e, d;
-    if (!(ss >> v >> e >> d)) throw runtime_error("Invalid graph header input.");
-
-    Graph g(v, d == 1 ? false : true);
-    for (int i = 0; i < e; ++i) {
-        string edgeLine = readLine(client_socket);
-        istringstream edgeStream(edgeLine);
-        int u, w;
-        if (!(edgeStream >> u >> w)) throw runtime_error("Invalid edge format");
-        g.addEdge(u, w);
-    }
-    return g;
-}
-
 int readChoice(int client_socket) {
     string line = readLine(client_socket);
     try {
         return stoi(line);
     } catch (...) {
-        return -1;
+        return -1;  // Invalid input
     }
 }
 
+// Read full graph
+Graph readGraphFromClient(int client_socket) {
+    string firstLine = readLine(client_socket);
+    istringstream firstStream(firstLine);
+    int v, e, d;
+
+    if (!(firstStream >> v >> e >> d)) {
+        throw runtime_error("Invalid graph header input.");
+    }
+
+    Graph g(v, d == 1 ? false : true);
+
+    for (int i = 0; i < e; ++i) {
+        string edgeLine = readLine(client_socket);
+        istringstream edgeStream(edgeLine);
+        int u, w;
+
+        if (!(edgeStream >> u >> w)) {
+            throw runtime_error("Invalid edge format");
+        }
+
+        g.addEdge(u, w);
+    }
+
+    return g;
+}
+
+// Random graph generator
 Graph generateRandomGraph(int vertices, int edges, int seed, bool directed) {
     Graph g(vertices, directed);
     set<pair<int, int>> used_edges;
+
     mt19937 rng(seed);
     uniform_int_distribution<int> dist(0, vertices - 1);
 
     int maxEdges = directed ? vertices * (vertices - 1) : vertices * (vertices - 1) / 2;
-    if (edges > maxEdges) throw runtime_error("Too many edges");
+    if (edges > maxEdges) {
+        throw runtime_error("Too many edges for the given number of vertices.");
+    }
 
     while (used_edges.size() < static_cast<size_t>(edges)) {
-        int u = dist(rng), v = dist(rng);
+        int u = dist(rng);
+        int v = dist(rng);
         if (u == v) continue;
-        auto edge = directed ? make_pair(u, v) : make_pair(min(u, v), max(u, v));
+
+        auto edge = directed ? make_pair(u, v): make_pair(min(u, v), max(u, v));
+
         if (used_edges.count(edge)) continue;
 
         g.addEdge(u, v);
         used_edges.insert(edge);
     }
+
     return g;
+}
+
+void mstWorker() {
+    while (true) {
+        PipelineData data = queueMST.pop();
+        int weight = findMSTWeight(data.graph);
+        data.mstResult = "MST Weight: " + to_string(weight) + "\n";
+        queueSCC.push(data);
+    }
+}
+
+void sccWorker() {
+    while (true) {
+        PipelineData data = queueSCC.pop();
+        auto scc = findSCC(data.graph);
+        data.sccResult = "SCC Components (" + to_string(scc.size()) + "):\n";
+        for (const auto& comp : scc) {
+            data.sccResult += "{ ";
+            for (int v : comp) data.sccResult += to_string(v) + " ";
+            data.sccResult += "}\n";
+        }
+        queueClique.push(data);
+    }
+}
+
+void cliqueWorker() {
+    while (true) {
+        PipelineData data = queueClique.pop();
+        auto clique = findMaxClique(data.graph);
+        data.cliqueResult = "Max Clique (" + to_string(clique.size()) + "): ";
+        for (int v : clique) data.cliqueResult += to_string(v) + " ";
+        data.cliqueResult += "\n";
+        queueMaxFlow.push(data);
+    }
+}
+
+void maxFlowWorker() {
+    while (true) {
+        PipelineData data = queueMaxFlow.pop();
+        int flow = findMaxFlow(data.graph);
+        data.maxFlowResult = "Max Flow: " + to_string(flow) + "\n";
+
+        // Combine result
+        string fullResponse = data.mstResult + data.sccResult + data.cliqueResult + data.maxFlowResult;
+        send(data.client_socket, fullResponse.c_str(), fullResponse.size(), 0);
+        close(data.client_socket);
+        cout << "Finished client (fd = " << data.client_socket << ")" << endl;
+    }
 }
 
 void handleClient(int client_socket) {
     try {
+        // Send input mode menu
         string menu = "\nChoose input mode:\n1 - Enter graph manually\n2 - Generate random graph\n0 - Exit\n";
         send(client_socket, menu.c_str(), menu.size(), 0);
 
         int mode = readChoice(client_socket);
         if (mode == 0 || mode == -1) {
             close(client_socket);
+            cout << "Client exited or invalid input." << endl;
             return;
         }
 
-        Graph g;
+        Graph g(0, false);
+
         if (mode == 1) {
             g = readGraphFromClient(client_socket);
         } else if (mode == 2) {
             string prompt = "Enter: vertices edges seed directed(0=dir,1=undir):\n";
             send(client_socket, prompt.c_str(), prompt.size(), 0);
+
             string input = readLine(client_socket);
             istringstream ss(input);
             int v, e, seed, d;
@@ -107,62 +180,39 @@ void handleClient(int client_socket) {
                 close(client_socket);
                 return;
             }
-            g = generateRandomGraph(v, e, seed, d == 1 ? false : true);
+
+            try {
+                g = generateRandomGraph(v, e, seed, d == 1 ? false : true);
+            } catch (const exception& ex) {
+                string err = string("Error generating graph: ") + ex.what() + "\n";
+                send(client_socket, err.c_str(), err.size(), 0);
+                close(client_socket);
+                return;
+            }
         } else {
-            send(client_socket, "Invalid input.\n", 15, 0);
+            string err = "Invalid input.\n";
+            send(client_socket, err.c_str(), err.size(), 0);
             close(client_socket);
             return;
         }
 
-        auto req = make_shared<Request>();
-        req->graph = g;
-        req->clientSocket = client_socket;
-        mstStage->enqueue(req);
+        // Pass to pipeline
+        PipelineData data(g, client_socket);
+        queueMST.push(data);
     } catch (...) {
+        cout << "Client disconnected or error occurred." << endl;
         close(client_socket);
     }
 }
 
+
 int main() {
-    // Build pipeline
-    finalStage = make_shared<ActiveObject<shared_ptr<Request>>>([](shared_ptr<Request> req) {
-        string response = req->mstResult + req->sccResult + req->cliqueResult + req->maxFlowResult;
-        send(req->clientSocket, response.c_str(), response.size(), 0);
-        close(req->clientSocket);
-    });
+    // Launch worker threads
+    thread(mstWorker).detach();
+    thread(sccWorker).detach();
+    thread(cliqueWorker).detach();
+    thread(maxFlowWorker).detach();
 
-    maxFlowStage = make_shared<ActiveObject<shared_ptr<Request>>>([](shared_ptr<Request> req) {
-        int flow = findMaxFlow(req->graph);
-        req->maxFlowResult = "Max Flow: " + to_string(flow) + "\n";
-        finalStage->enqueue(req);
-    });
-
-    cliqueStage = make_shared<ActiveObject<shared_ptr<Request>>>([](shared_ptr<Request> req) {
-        auto clique = findMaxClique(req->graph);
-        req->cliqueResult = "Max Clique (" + to_string(clique.size()) + "): ";
-        for (int v : clique) req->cliqueResult += to_string(v) + " ";
-        req->cliqueResult += "\n";
-        maxFlowStage->enqueue(req);
-    });
-
-    sccStage = make_shared<ActiveObject<shared_ptr<Request>>>([](shared_ptr<Request> req) {
-        auto scc = findSCC(req->graph);
-        req->sccResult = "SCC Components (" + to_string(scc.size()) + "):\n";
-        for (const auto& comp : scc) {
-            req->sccResult += "{ ";
-            for (int v : comp) req->sccResult += to_string(v) + " ";
-            req->sccResult += "}\n";
-        }
-        cliqueStage->enqueue(req);
-    });
-
-    mstStage = make_shared<ActiveObject<shared_ptr<Request>>>([](shared_ptr<Request> req) {
-        int weight = findMSTWeight(req->graph);
-        req->mstResult = "MST Weight: " + to_string(weight) + "\n";
-        sccStage->enqueue(req);
-    });
-
-    // TCP server
     int server_fd, client_socket;
     struct sockaddr_in address;
     int opt = 1;
@@ -177,7 +227,8 @@ int main() {
     bind(server_fd, (struct sockaddr*)&address, sizeof(address));
     listen(server_fd, 3);
 
-    cout << "Waiting for connections on port " << PORT << "...\n";
+    cout << "Pipeline server waiting for connections on port " << PORT << "...\n";
+
     while (true) {
         memset(buffer, 0, MAX_BUFFER);
         client_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen);
@@ -185,6 +236,7 @@ int main() {
             cerr << "Failed to accept connection.\n";
             continue;
         }
+        cout << "Client connected (fd = " << client_socket << ")" << endl;
         thread t(handleClient, client_socket);
         t.detach();
     }

@@ -3,6 +3,8 @@
         "iosfwd": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "atomic": "cpp",
+        "condition_variable": "cpp"
     }
 }

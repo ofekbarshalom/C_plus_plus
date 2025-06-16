@@ -16,7 +16,9 @@ HDR = $(CORE_DIR)/Graph.hpp \
       $(ALG_DIR)/MSTAlgorithm.hpp \
       $(ALG_DIR)/SCCAlgorithm.hpp \
       $(ALG_DIR)/CliqueAlgorithm.hpp \
-      $(ALG_DIR)/MaxFlowAlgorithm.hpp
+      $(ALG_DIR)/MaxFlowAlgorithm.hpp \
+      $(SRV_DIR)/BlockingQueue.hpp \
+      $(SRV_DIR)/PipelineData.hpp
 
 # Source files
 GRAPH_SRC = $(CORE_DIR)/Graph.cpp $(CORE_DIR)/GraphAlgorithms.cpp \

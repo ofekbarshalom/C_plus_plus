@@ -5,8 +5,7 @@ using namespace std;
 namespace GraphAlgo {
 
 // Constructor
-Graph::Graph(int vertices, bool isDirected)
-    : numVertices(vertices), directed(isDirected), adjList(vertices) {}
+Graph::Graph(int vertices, bool isDirected): numVertices(vertices), directed(isDirected), adjList(vertices) {}
 
 // Copy Constructor
 Graph::Graph(const Graph& other)
