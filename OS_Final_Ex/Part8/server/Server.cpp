@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <netinet/in.h>
+#include <thread>
 #include <unistd.h>
 #include "../core/Graph.hpp"
 #include "../core/GraphAlgorithms.hpp"
@@ -15,37 +16,36 @@ using namespace GraphAlgo;
 #define PORT 8080
 #define MAX_BUFFER 4096
 
-// Read graph structure from client (vertex count, edge count, directed/undirected, and edges)
+// Helper: read a single full line from socket
+string readLine(int client_socket) {
+    string line;
+    char c;
+    while (true) {
+        ssize_t bytesRead = read(client_socket, &c, 1);
+        if (bytesRead <= 0) throw runtime_error("Connection lost while reading");
+
+        if (c == '\n') break;
+        line += c;
+    }
+    return line;
+}
+
 Graph readGraphFromClient(int client_socket) {
-    char buffer[MAX_BUFFER];
-    string graphInput;
-
-    // Read first line: number of vertices, edges, and direction flag
-    memset(buffer, 0, MAX_BUFFER);
-    int bytesRead = read(client_socket, buffer, MAX_BUFFER);
-    if (bytesRead <= 0) throw runtime_error("Connection lost while reading graph");
-
-    graphInput += buffer;
-    istringstream firstLine(graphInput);
+    // Read first line: v e d
+    string firstLine = readLine(client_socket);
+    istringstream firstStream(firstLine);
     int v, e, d;
-    firstLine >> v >> e >> d;
+    firstStream >> v >> e >> d;
 
-    Graph g(v, d == 1 ? false : true);  // Create graph object
+    Graph g(v, d == 1 ? false : true);
 
-    // Read edges
-    int edgesRead = 0;
-    while (edgesRead < e) {
-        memset(buffer, 0, MAX_BUFFER);
-        bytesRead = read(client_socket, buffer, MAX_BUFFER);
-        if (bytesRead <= 0) throw runtime_error("Connection lost while reading edges");
-
-        istringstream edgeLines(buffer);
-        while (edgesRead < e) {
-            int u, w;
-            if (!(edgeLines >> u >> w)) break;
-            g.addEdge(u, w);
-            edgesRead++;
-        }
+    // Read exactly e edge lines
+    for (int i = 0; i < e; ++i) {
+        string edgeLine = readLine(client_socket);
+        istringstream edgeStream(edgeLine);
+        int u, w;
+        edgeStream >> u >> w;
+        g.addEdge(u, w);
     }
 
     return g;
@@ -98,6 +98,9 @@ void handleClient(int client_socket) {
     } catch (...) {
         cout << "Client disconnected or error occurred." << endl;
     }
+
+    close(client_socket); 
+    cout << "Client disconnected (fd = " << client_socket  << ")" << endl;
 }
 
 int main() {
@@ -123,8 +126,15 @@ int main() {
     while (true) {
         memset(buffer, 0, MAX_BUFFER);
         client_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen);
-        handleClient(client_socket);
-        close(client_socket);
+        if (client_socket < 0) {
+            cerr << "Failed to accept connection.\n";
+            continue;
+        }
+
+        cout << "Client connected (fd = " << client_socket << ")" <<endl;
+
+        thread t(handleClient, client_socket);
+        t.detach();
     }
 
     close(server_fd);
