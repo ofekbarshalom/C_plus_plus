@@ -44,17 +44,17 @@ $(SERVER_OUT): $(SERVER_SRC) $(GRAPH_SRC) $(HDR)
 .PHONY: server valgrind helgrind callgrind clean
 server: $(SERVER_OUT)
 
-# Run Valgrind memcheck
+# Run Valgrind memcheck with log
 valgrind: $(SERVER_OUT)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(SERVER_OUT)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(SERVER_OUT) 2>&1 | tee valgrind_output.txt
 
-# Run Helgrind (thread race detection)
+# Run Helgrind (thread race detection) with log
 helgrind: $(SERVER_OUT)
-	valgrind --tool=helgrind ./$(SERVER_OUT)
+	valgrind --tool=helgrind ./$(SERVER_OUT) 2>&1 | tee helgrind_output.txt
 
-# Run Callgrind (performance profiling)
+# Run Callgrind (performance profiling) with log
 callgrind: $(SERVER_OUT)
-	valgrind --tool=callgrind ./$(SERVER_OUT)
+	valgrind --tool=callgrind ./$(SERVER_OUT) 2>&1 | tee callgrind_output.txt
 
 # Clean rule
 clean:

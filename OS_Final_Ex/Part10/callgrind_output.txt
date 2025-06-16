@@ -1,0 +1,19 @@
+==201808== Callgrind, a call-graph generating cache profiler
+==201808== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.
+==201808== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==201808== Command: ./server_exec
+==201808== 
+==201808== For interactive control, run 'callgrind_control -h'.
+Pipeline server waiting for connections on port 5050...
+Client connected (fd = 4)
+Finished client (fd = 4)
+Client connected (fd = 4)
+Finished client (fd = 4)
+Client connected (fd = 4)
+Client requested shutdown or sent invalid input.
+Server shutdown complete.
+==201808== 
+==201808== Events    : Ir
+==201808== Collected : 2571657
+==201808== 
+==201808== I   refs:      2,571,657

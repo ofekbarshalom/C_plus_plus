@@ -8,7 +8,7 @@ ALG_DIR = algorithms
 CORE_DIR = core
 SRV_DIR = server
 
-# Headers
+# Headers (not actually needed for makefile rules but kept for documentation)
 HDR = $(CORE_DIR)/Graph.hpp \
       $(CORE_DIR)/GraphAlgorithms.hpp \
       $(ALG_DIR)/AlgorithmStrategy.hpp \
@@ -21,24 +21,38 @@ HDR = $(CORE_DIR)/Graph.hpp \
       $(SRV_DIR)/BlockingQueue.hpp \
       $(SRV_DIR)/PipelineData.hpp
 
-# Sources
+# Source files
 GRAPH_SRC = $(CORE_DIR)/Graph.cpp $(CORE_DIR)/GraphAlgorithms.cpp \
             $(ALG_DIR)/AlgorithmFactory.cpp
 
 SERVER_SRC = $(SRV_DIR)/Server.cpp
+
+# Build object files from sources
+GRAPH_OBJ = $(GRAPH_SRC:.cpp=.o)
+SERVER_OBJ = $(SERVER_SRC:.cpp=.o)
+
+# Final executable
 SERVER_OUT = server_exec
 
-# Build
-$(SERVER_OUT): $(SERVER_SRC) $(GRAPH_SRC) $(HDR)
-	$(CXX) $(CXXFLAGS) -o $(SERVER_OUT) $(SERVER_SRC) $(GRAPH_SRC) $(LDFLAGS)
+# Default rule
+all: $(SERVER_OUT)
+
+# Link the final executable
+$(SERVER_OUT): $(SERVER_OBJ) $(GRAPH_OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+
+# Compile each cpp file into object file
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Clean rule
 clean:
-	rm -f $(SERVER_OUT) *.gcda *.gcno *.info
+	rm -f $(SERVER_OUT) $(GRAPH_OBJ) $(SERVER_OBJ) *.gcda *.gcno *.info
 	rm -rf coverage
 
 # Coverage rule
 coverage: $(SERVER_OUT)
-	lcov --capture --directory . --output-file coverage.info
+	lcov --capture --directory $(CORE_DIR) --directory $(ALG_DIR) --directory $(SRV_DIR) --output-file coverage.info
 	genhtml coverage.info --output-directory coverage
 	@echo "Coverage report generated: ./coverage/index.html"
+
