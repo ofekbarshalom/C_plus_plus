@@ -2,6 +2,9 @@
 
 This project implements a multithreaded C++ TCP server that allows users to input or generate graphs and compute multiple graph algorithms in parallel using the pipeline pattern.
 
+> The file structure and explanation apply specifically to **Part 9** of the project.  
+> Earlier parts (1–8) follow separate implementation instructions and may differ in structure.
+
 ## Features
 
 - TCP server that accepts client connections.
