@@ -1,6 +1,8 @@
 # List of all parts
 PARTS = Part1 Part2 Part3 Part4 Part6 Part7 Part8 Part8b Part9
 
+.PHONY: all $(PARTS) clean
+
 # Default target: build all parts
 all: $(PARTS)
 
