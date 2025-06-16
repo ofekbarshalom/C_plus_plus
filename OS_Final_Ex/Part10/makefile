@@ -40,10 +40,22 @@ $(MAIN_OUT): $(MAIN_SRC) $(GRAPH_SRC) $(HDR)
 $(SERVER_OUT): $(SERVER_SRC) $(GRAPH_SRC) $(HDR)
 	$(CXX) $(CXXFLAGS) -o $(SERVER_OUT) $(SERVER_SRC) $(GRAPH_SRC)
 
-# Alias target so you can run: make server
-.PHONY: server
+# Alias target
+.PHONY: server valgrind helgrind callgrind clean
 server: $(SERVER_OUT)
+
+# Run Valgrind memcheck
+valgrind: $(SERVER_OUT)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(SERVER_OUT)
+
+# Run Helgrind (thread race detection)
+helgrind: $(SERVER_OUT)
+	valgrind --tool=helgrind ./$(SERVER_OUT)
+
+# Run Callgrind (performance profiling)
+callgrind: $(SERVER_OUT)
+	valgrind --tool=callgrind ./$(SERVER_OUT)
 
 # Clean rule
 clean:
-	rm -f $(MAIN_OUT) $(SERVER_OUT)
+	rm -f $(MAIN_OUT) $(SERVER_OUT) callgrind.out.*

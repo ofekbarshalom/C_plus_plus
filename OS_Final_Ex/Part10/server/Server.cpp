@@ -6,8 +6,8 @@
 #include <sstream>
 #include <random>
 #include <set>
-#include <vector>               
-#include <utility>              
+#include <vector>      
+#include <utility>
 #include "BlockingQueue.hpp"
 #include "PipelineData.hpp"
 #include "../core/GraphAlgorithms.hpp"
@@ -16,8 +16,11 @@
 using namespace std;
 using namespace GraphAlgo;
 
-#define PORT 8080
+#define PORT 5050
 #define MAX_BUFFER 4096
+
+#include <atomic>
+std::atomic<bool> running(true);
 
 // Create blocking queues
 BlockingQueue<PipelineData> queueMST;
@@ -105,6 +108,8 @@ Graph generateRandomGraph(int vertices, int edges, int seed, bool directed) {
 void mstWorker() {
     while (true) {
         PipelineData data = queueMST.pop();
+        if (!running || data.client_socket == -1) break;
+
         int weight = findMSTWeight(data.graph);
         data.mstResult = "MST Weight: " + to_string(weight) + "\n";
         queueSCC.push(data);
@@ -114,6 +119,8 @@ void mstWorker() {
 void sccWorker() {
     while (true) {
         PipelineData data = queueSCC.pop();
+        if (!running || data.client_socket == -1) break;
+
         auto scc = findSCC(data.graph);
         data.sccResult = "SCC Components (" + to_string(scc.size()) + "):\n";
         for (const auto& comp : scc) {
@@ -128,6 +135,8 @@ void sccWorker() {
 void cliqueWorker() {
     while (true) {
         PipelineData data = queueClique.pop();
+        if (!running || data.client_socket == -1) break;
+
         auto clique = findMaxClique(data.graph);
         data.cliqueResult = "Max Clique (" + to_string(clique.size()) + "): ";
         for (int v : clique) data.cliqueResult += to_string(v) + " ";
@@ -139,10 +148,11 @@ void cliqueWorker() {
 void maxFlowWorker() {
     while (true) {
         PipelineData data = queueMaxFlow.pop();
+        if (!running || data.client_socket == -1) break;
+
         int flow = findMaxFlow(data.graph);
         data.maxFlowResult = "Max Flow: " + to_string(flow) + "\n";
 
-        // Combine result
         string fullResponse = data.mstResult + data.sccResult + data.cliqueResult + data.maxFlowResult;
         send(data.client_socket, fullResponse.c_str(), fullResponse.size(), 0);
         close(data.client_socket);
@@ -150,24 +160,27 @@ void maxFlowWorker() {
     }
 }
 
+
 void handleClient(int client_socket) {
     try {
         // Send input mode menu
-        string menu = "\nChoose input mode:\n1 - Enter graph manually\n2 - Generate random graph\n0 - Exit\n";
+        string menu = "\nChoose input mode:\n"
+                      "1 - Exit server\n"
+                      "2 - Generate random graph\n"
+                      "3 - Enter graph manually\n";
         send(client_socket, menu.c_str(), menu.size(), 0);
 
         int mode = readChoice(client_socket);
-        if (mode == 0 || mode == -1) {
+        if (mode == 1 || mode == -1) {
             close(client_socket);
-            cout << "Client exited or invalid input." << endl;
+            cout << "Client requested shutdown or sent invalid input." << endl;
+            running = false;
             return;
         }
 
         Graph g(0, false);
 
-        if (mode == 1) {
-            g = readGraphFromClient(client_socket);
-        } else if (mode == 2) {
+        if (mode == 2) {
             string prompt = "Enter: vertices edges seed directed(0=dir,1=undir):\n";
             send(client_socket, prompt.c_str(), prompt.size(), 0);
 
@@ -189,6 +202,8 @@ void handleClient(int client_socket) {
                 close(client_socket);
                 return;
             }
+        } else if (mode == 3) {
+            g = readGraphFromClient(client_socket);
         } else {
             string err = "Invalid input.\n";
             send(client_socket, err.c_str(), err.size(), 0);
@@ -206,12 +221,13 @@ void handleClient(int client_socket) {
 }
 
 
+
 int main() {
     // Launch worker threads
-    thread(mstWorker).detach();
-    thread(sccWorker).detach();
-    thread(cliqueWorker).detach();
-    thread(maxFlowWorker).detach();
+    thread t1(mstWorker);
+    thread t2(sccWorker);
+    thread t3(cliqueWorker);
+    thread t4(maxFlowWorker);
 
     int server_fd, client_socket;
     struct sockaddr_in address;
@@ -229,18 +245,50 @@ int main() {
 
     cout << "Pipeline server waiting for connections on port " << PORT << "...\n";
 
-    while (true) {
-        memset(buffer, 0, MAX_BUFFER);
-        client_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen);
-        if (client_socket < 0) {
-            cerr << "Failed to accept connection.\n";
-            continue;
+    fd_set readfds;
+    struct timeval timeout;
+
+    while (running) {
+        FD_ZERO(&readfds);
+        FD_SET(server_fd, &readfds);
+
+        timeout.tv_sec = 1;
+        timeout.tv_usec = 0;
+
+        int activity = select(server_fd + 1, &readfds, nullptr, nullptr, &timeout);
+
+        if (activity < 0 && errno != EINTR) {
+            cerr << "select() error.\n";
+            break;
         }
-        cout << "Client connected (fd = " << client_socket << ")" << endl;
-        thread t(handleClient, client_socket);
-        t.detach();
+
+        if (activity > 0 && FD_ISSET(server_fd, &readfds)) {
+            memset(buffer, 0, MAX_BUFFER);
+            client_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen);
+            if (client_socket < 0) {
+                cerr << "Failed to accept connection.\n";
+                continue;
+            }
+            cout << "Client connected (fd = " << client_socket << ")" << endl;
+            thread t(handleClient, client_socket);
+            t.detach();
+        }
     }
 
+    // Push dummy PipelineData to unblock each thread
+    PipelineData dummy(Graph(0, false), -1);
+    queueMST.push(dummy);
+    queueSCC.push(dummy);
+    queueClique.push(dummy);
+    queueMaxFlow.push(dummy);
+
+    // Join threads
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+
     close(server_fd);
+    cout << "Server shutdown complete.\n";
     return 0;
 }

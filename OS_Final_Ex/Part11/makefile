@@ -1,13 +1,14 @@
 # Compiler
 CXX = g++
-CXXFLAGS = -Wall -std=c++17 -pthread -g
+CXXFLAGS = -Wall -std=c++17 -pthread -g --coverage
+LDFLAGS = --coverage
 
 # Folders
 ALG_DIR = algorithms
 CORE_DIR = core
 SRV_DIR = server
 
-# Header files
+# Headers
 HDR = $(CORE_DIR)/Graph.hpp \
       $(CORE_DIR)/GraphAlgorithms.hpp \
       $(ALG_DIR)/AlgorithmStrategy.hpp \
@@ -20,30 +21,24 @@ HDR = $(CORE_DIR)/Graph.hpp \
       $(SRV_DIR)/BlockingQueue.hpp \
       $(SRV_DIR)/PipelineData.hpp
 
-# Source files
+# Sources
 GRAPH_SRC = $(CORE_DIR)/Graph.cpp $(CORE_DIR)/GraphAlgorithms.cpp \
             $(ALG_DIR)/AlgorithmFactory.cpp
 
-# Main executable
-MAIN_SRC = main.cpp
-MAIN_OUT = main
-
-# Server executable
 SERVER_SRC = $(SRV_DIR)/Server.cpp
 SERVER_OUT = server_exec
 
-# Build main
-$(MAIN_OUT): $(MAIN_SRC) $(GRAPH_SRC) $(HDR)
-	$(CXX) $(CXXFLAGS) -o $(MAIN_OUT) $(MAIN_SRC) $(GRAPH_SRC)
-
-# Build server_exec
+# Build
 $(SERVER_OUT): $(SERVER_SRC) $(GRAPH_SRC) $(HDR)
-	$(CXX) $(CXXFLAGS) -o $(SERVER_OUT) $(SERVER_SRC) $(GRAPH_SRC)
-
-# Alias target so you can run: make server
-.PHONY: server
-server: $(SERVER_OUT)
+	$(CXX) $(CXXFLAGS) -o $(SERVER_OUT) $(SERVER_SRC) $(GRAPH_SRC) $(LDFLAGS)
 
 # Clean rule
 clean:
-	rm -f $(MAIN_OUT) $(SERVER_OUT)
+	rm -f $(SERVER_OUT) *.gcda *.gcno *.info
+	rm -rf coverage
+
+# Coverage rule
+coverage: $(SERVER_OUT)
+	lcov --capture --directory . --output-file coverage.info
+	genhtml coverage.info --output-directory coverage
+	@echo "Coverage report generated: ./coverage/index.html"
