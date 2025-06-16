@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -264,10 +264,10 @@
 <span id="L202"><span class="lineNum">     202</span>              : </span>
 <span id="L203"><span class="lineNum">     203</span>              :   template&lt;typename _Tp&gt;</span>
 <span id="L204"><span class="lineNum">     204</span>              :     constexpr _Tp*</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         195 :     __to_address(_Tp* __ptr) noexcept</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         359 :     __to_address(_Tp* __ptr) noexcept</span></span>
 <span id="L206"><span class="lineNum">     206</span>              :     {</span>
 <span id="L207"><span class="lineNum">     207</span>              :       static_assert(!std::is_function&lt;_Tp&gt;::value, &quot;not a function pointer&quot;);</span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         195 :       return __ptr;</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         359 :       return __ptr;</span></span>
 <span id="L209"><span class="lineNum">     209</span>              :     }</span>
 <span id="L210"><span class="lineNum">     210</span>              : </span>
 <span id="L211"><span class="lineNum">     211</span>              : #ifndef __glibcxx_to_address // C++ &lt; 20</span>

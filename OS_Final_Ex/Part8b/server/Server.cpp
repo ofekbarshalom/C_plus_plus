@@ -154,34 +154,25 @@ void handleClient(int client_socket) {
 
         // Same 4 parallel threads code as before:
         string mstResult, sccResult, cliqueResult, maxFlowResult;
+        auto algorithmMST = AlgorithmFactory::create(2);
+        auto algorithmSCC = AlgorithmFactory::create(3);
+        auto algorithmCLIQUE = AlgorithmFactory::create(4);
+        auto algorithmMAX_FLOW = AlgorithmFactory::create(5);
 
         thread mstThread([&]() {
-            int weight = findMSTWeight(g);
-            mstResult = "MST Weight: " + to_string(weight) + "\n";
+            algorithmMST->execute(g);
         });
 
         thread sccThread([&]() {
-            vector<vector<int>> scc = findSCC(g);
-            sccResult = "SCC Components (" + to_string(scc.size()) + "):\n";
-            for (const auto& comp : scc) {
-                sccResult += "{ ";
-                for (int v : comp)
-                    sccResult += to_string(v) + " ";
-                sccResult += "}\n";
-            }
+            algorithmSCC->execute(g);
         });
 
         thread cliqueThread([&]() {
-            vector<int> clique = findMaxClique(g);
-            cliqueResult = "Max Clique (" + to_string(clique.size()) + "): ";
-            for (int v : clique)
-                cliqueResult += to_string(v) + " ";
-            cliqueResult += "\n";
+            algorithmCLIQUE->execute(g);
         });
 
         thread maxFlowThread([&]() {
-            int flow = findMaxFlow(g);
-            maxFlowResult = "Max Flow: " + to_string(flow) + "\n";
+            algorithmMAX_FLOW->execute(g);
         });
 
         mstThread.join();

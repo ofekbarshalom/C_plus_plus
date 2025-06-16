@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">37.5&nbsp;%</td>
@@ -543,7 +543,7 @@
 <span id="L481"><span class="lineNum">     481</span>              : #if __cplusplus &gt;= 201103L</span>
 <span id="L482"><span class="lineNum">     482</span>              :     template&lt;typename... _Args&gt;</span>
 <span id="L483"><span class="lineNum">     483</span>              :       void</span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">          12 :       deque&lt;_Tp, _Alloc&gt;::</span></span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">           8 :       deque&lt;_Tp, _Alloc&gt;::</span></span>
 <span id="L485"><span class="lineNum">     485</span>              :       _M_push_back_aux(_Args&amp;&amp;... __args)</span>
 <span id="L486"><span class="lineNum">     486</span>              : #else</span>
 <span id="L487"><span class="lineNum">     487</span>              :       void</span>
@@ -551,31 +551,31 @@
 <span id="L489"><span class="lineNum">     489</span>              :       _M_push_back_aux(const value_type&amp; __t)</span>
 <span id="L490"><span class="lineNum">     490</span>              : #endif</span>
 <span id="L491"><span class="lineNum">     491</span>              :       {</span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">          12 :         if (size() == max_size())</span></span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">           8 :         if (size() == max_size())</span></span>
 <span id="L493"><span class="lineNum">     493</span> <span class="tlaUNC">           0 :           __throw_length_error(</span></span>
 <span id="L494"><span class="lineNum">     494</span>              :               __N(&quot;cannot create std::deque larger than max_size()&quot;));</span>
 <span id="L495"><span class="lineNum">     495</span>              : </span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">          12 :         _M_reserve_map_at_back();</span></span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">          12 :         *(this-&gt;_M_impl._M_finish._M_node + 1) = this-&gt;_M_allocate_node();</span></span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">           8 :         _M_reserve_map_at_back();</span></span>
+<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">           8 :         *(this-&gt;_M_impl._M_finish._M_node + 1) = this-&gt;_M_allocate_node();</span></span>
 <span id="L498"><span class="lineNum">     498</span>              :         __try</span>
 <span id="L499"><span class="lineNum">     499</span>              :           {</span>
 <span id="L500"><span class="lineNum">     500</span>              : #if __cplusplus &gt;= 201103L</span>
-<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">          12 :             _Alloc_traits::construct(this-&gt;_M_impl,</span></span>
+<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">           8 :             _Alloc_traits::construct(this-&gt;_M_impl,</span></span>
 <span id="L502"><span class="lineNum">     502</span>              :                                      this-&gt;_M_impl._M_finish._M_cur,</span>
 <span id="L503"><span class="lineNum">     503</span>              :                                      std::forward&lt;_Args&gt;(__args)...);</span>
 <span id="L504"><span class="lineNum">     504</span>              : #else</span>
 <span id="L505"><span class="lineNum">     505</span>              :             this-&gt;_M_impl.construct(this-&gt;_M_impl._M_finish._M_cur, __t);</span>
 <span id="L506"><span class="lineNum">     506</span>              : #endif</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          12 :             this-&gt;_M_impl._M_finish._M_set_node(this-&gt;_M_impl._M_finish._M_node</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">           8 :             this-&gt;_M_impl._M_finish._M_set_node(this-&gt;_M_impl._M_finish._M_node</span></span>
 <span id="L508"><span class="lineNum">     508</span>              :                                                 + 1);</span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          12 :             this-&gt;_M_impl._M_finish._M_cur = this-&gt;_M_impl._M_finish._M_first;</span></span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">           8 :             this-&gt;_M_impl._M_finish._M_cur = this-&gt;_M_impl._M_finish._M_first;</span></span>
 <span id="L510"><span class="lineNum">     510</span>              :           }</span>
 <span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :         __catch(...)</span></span>
 <span id="L512"><span class="lineNum">     512</span>              :           {</span>
 <span id="L513"><span class="lineNum">     513</span> <span class="tlaUNC">           0 :             _M_deallocate_node(*(this-&gt;_M_impl._M_finish._M_node + 1));</span></span>
 <span id="L514"><span class="lineNum">     514</span> <span class="tlaUNC">           0 :             __throw_exception_again;</span></span>
 <span id="L515"><span class="lineNum">     515</span>              :           }</span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          12 :       }</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">           8 :       }</span></span>
 <span id="L517"><span class="lineNum">     517</span>              : </span>
 <span id="L518"><span class="lineNum">     518</span>              :   // Called only if _M_impl._M_start._M_cur == _M_impl._M_start._M_first.</span>
 <span id="L519"><span class="lineNum">     519</span>              :   template&lt;typename _Tp, typename _Alloc&gt;</span>
@@ -635,15 +635,15 @@
 <span id="L573"><span class="lineNum">     573</span>              :   //   _M_impl._M_start._M_cur == _M_impl._M_start._M_last,</span>
 <span id="L574"><span class="lineNum">     574</span>              :   // then the deque must have at least two nodes.</span>
 <span id="L575"><span class="lineNum">     575</span>              :   template &lt;typename _Tp, typename _Alloc&gt;</span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">          12 :     void deque&lt;_Tp, _Alloc&gt;::</span></span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           8 :     void deque&lt;_Tp, _Alloc&gt;::</span></span>
 <span id="L577"><span class="lineNum">     577</span>              :     _M_pop_front_aux()</span>
 <span id="L578"><span class="lineNum">     578</span>              :     {</span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">          12 :       _Alloc_traits::destroy(_M_get_Tp_allocator(),</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           8 :       _Alloc_traits::destroy(_M_get_Tp_allocator(),</span></span>
 <span id="L580"><span class="lineNum">     580</span>              :                              this-&gt;_M_impl._M_start._M_cur);</span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          12 :       _M_deallocate_node(this-&gt;_M_impl._M_start._M_first);</span></span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">          12 :       this-&gt;_M_impl._M_start._M_set_node(this-&gt;_M_impl._M_start._M_node + 1);</span></span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          12 :       this-&gt;_M_impl._M_start._M_cur = this-&gt;_M_impl._M_start._M_first;</span></span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          12 :     }</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">           8 :       _M_deallocate_node(this-&gt;_M_impl._M_start._M_first);</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           8 :       this-&gt;_M_impl._M_start._M_set_node(this-&gt;_M_impl._M_start._M_node + 1);</span></span>
+<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">           8 :       this-&gt;_M_impl._M_start._M_cur = this-&gt;_M_impl._M_start._M_first;</span></span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">           8 :     }</span></span>
 <span id="L585"><span class="lineNum">     585</span>              : </span>
 <span id="L586"><span class="lineNum">     586</span>              :   template &lt;typename _Tp, typename _Alloc&gt;</span>
 <span id="L587"><span class="lineNum">     587</span>              :     template &lt;typename _InputIterator&gt;</span>
@@ -921,15 +921,15 @@
 <span id="L859"><span class="lineNum">     859</span>              : </span>
 <span id="L860"><span class="lineNum">     860</span>              :    template&lt;typename _Tp, typename _Alloc&gt;</span>
 <span id="L861"><span class="lineNum">     861</span>              :      void</span>
-<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">          12 :      deque&lt;_Tp, _Alloc&gt;::</span></span>
+<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">           4 :      deque&lt;_Tp, _Alloc&gt;::</span></span>
 <span id="L863"><span class="lineNum">     863</span>              :      _M_destroy_data_aux(iterator __first, iterator __last)</span>
 <span id="L864"><span class="lineNum">     864</span>              :      {</span>
-<span id="L865"><span class="lineNum">     865</span> <span class="tlaGNC">          12 :        for (_Map_pointer __node = __first._M_node + 1;</span></span>
-<span id="L866"><span class="lineNum">     866</span> <span class="tlaGNC">          12 :             __node &lt; __last._M_node; ++__node)</span></span>
+<span id="L865"><span class="lineNum">     865</span> <span class="tlaGNC">           4 :        for (_Map_pointer __node = __first._M_node + 1;</span></span>
+<span id="L866"><span class="lineNum">     866</span> <span class="tlaGNC">           4 :             __node &lt; __last._M_node; ++__node)</span></span>
 <span id="L867"><span class="lineNum">     867</span> <span class="tlaUNC">           0 :          std::_Destroy(*__node, *__node + _S_buffer_size(),</span></span>
 <span id="L868"><span class="lineNum">     868</span> <span class="tlaUNC">           0 :                        _M_get_Tp_allocator());</span></span>
 <span id="L869"><span class="lineNum">     869</span>              : </span>
-<span id="L870"><span class="lineNum">     870</span> <span class="tlaGNC">          12 :        if (__first._M_node != __last._M_node)</span></span>
+<span id="L870"><span class="lineNum">     870</span> <span class="tlaGNC">           4 :        if (__first._M_node != __last._M_node)</span></span>
 <span id="L871"><span class="lineNum">     871</span>              :          {</span>
 <span id="L872"><span class="lineNum">     872</span> <span class="tlaUNC">           0 :            std::_Destroy(__first._M_cur, __first._M_last,</span></span>
 <span id="L873"><span class="lineNum">     873</span> <span class="tlaUNC">           0 :                          _M_get_Tp_allocator());</span></span>
@@ -937,9 +937,9 @@
 <span id="L875"><span class="lineNum">     875</span> <span class="tlaUNC">           0 :                          _M_get_Tp_allocator());</span></span>
 <span id="L876"><span class="lineNum">     876</span>              :          }</span>
 <span id="L877"><span class="lineNum">     877</span>              :        else</span>
-<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">          12 :          std::_Destroy(__first._M_cur, __last._M_cur,</span></span>
-<span id="L879"><span class="lineNum">     879</span> <span class="tlaGNC">          12 :                        _M_get_Tp_allocator());</span></span>
-<span id="L880"><span class="lineNum">     880</span> <span class="tlaGNC">          12 :      }</span></span>
+<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">           4 :          std::_Destroy(__first._M_cur, __last._M_cur,</span></span>
+<span id="L879"><span class="lineNum">     879</span> <span class="tlaGNC">           4 :                        _M_get_Tp_allocator());</span></span>
+<span id="L880"><span class="lineNum">     880</span> <span class="tlaGNC">           4 :      }</span></span>
 <span id="L881"><span class="lineNum">     881</span>              : </span>
 <span id="L882"><span class="lineNum">     882</span>              :   template &lt;typename _Tp, typename _Alloc&gt;</span>
 <span id="L883"><span class="lineNum">     883</span>              :     void</span>

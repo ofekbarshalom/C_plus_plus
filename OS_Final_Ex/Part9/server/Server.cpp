@@ -12,6 +12,7 @@
 #include "PipelineData.hpp"
 #include "../core/GraphAlgorithms.hpp"
 #include "../core/Graph.hpp"
+#include "../algorithms/AlgorithmFactory.hpp"
 
 using namespace std;
 using namespace GraphAlgo;
@@ -105,8 +106,8 @@ Graph generateRandomGraph(int vertices, int edges, int seed, bool directed) {
 void mstWorker() {
     while (true) {
         PipelineData data = queueMST.pop();
-        int weight = findMSTWeight(data.graph);
-        data.mstResult = "MST Weight: " + to_string(weight) + "\n";
+        auto algorithm = AlgorithmFactory::create(2);
+        data.mstResult = algorithm->execute(data.graph);
         queueSCC.push(data);
     }
 }
@@ -114,13 +115,8 @@ void mstWorker() {
 void sccWorker() {
     while (true) {
         PipelineData data = queueSCC.pop();
-        auto scc = findSCC(data.graph);
-        data.sccResult = "SCC Components (" + to_string(scc.size()) + "):\n";
-        for (const auto& comp : scc) {
-            data.sccResult += "{ ";
-            for (int v : comp) data.sccResult += to_string(v) + " ";
-            data.sccResult += "}\n";
-        }
+        auto algorithm = AlgorithmFactory::create(3);
+        data.sccResult = algorithm->execute(data.graph);
         queueClique.push(data);
     }
 }
@@ -128,10 +124,8 @@ void sccWorker() {
 void cliqueWorker() {
     while (true) {
         PipelineData data = queueClique.pop();
-        auto clique = findMaxClique(data.graph);
-        data.cliqueResult = "Max Clique (" + to_string(clique.size()) + "): ";
-        for (int v : clique) data.cliqueResult += to_string(v) + " ";
-        data.cliqueResult += "\n";
+        auto algorithm = AlgorithmFactory::create(4);
+        data.cliqueResult = algorithm->execute(data.graph);
         queueMaxFlow.push(data);
     }
 }
@@ -139,8 +133,8 @@ void cliqueWorker() {
 void maxFlowWorker() {
     while (true) {
         PipelineData data = queueMaxFlow.pop();
-        int flow = findMaxFlow(data.graph);
-        data.maxFlowResult = "Max Flow: " + to_string(flow) + "\n";
+        auto algorithm = AlgorithmFactory::create(5);
+        data.maxFlowResult = algorithm->execute(data.graph);
 
         // Combine result
         string fullResponse = data.mstResult + data.sccResult + data.cliqueResult + data.maxFlowResult;

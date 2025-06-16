@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">81.2&nbsp;%</td>
@@ -79,21 +79,21 @@
 <span id="L17"><span class="lineNum">      17</span>              : struct UF {</span>
 <span id="L18"><span class="lineNum">      18</span>              :     vector&lt;int&gt; parent;</span>
 <span id="L19"><span class="lineNum">      19</span>              : </span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          14 :     UF(int n) : parent(n) {</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          49 :         for (int i = 0; i &lt; n; ++i) parent[i] = i;</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           7 :     }</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          24 :     UF(int n) : parent(n) {</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          84 :         for (int i = 0; i &lt; n; ++i) parent[i] = i;</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">          12 :     }</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          89 :     int find(int x) {</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          89 :         if (parent[x] != x)</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">          27 :             parent[x] = find(parent[x]);  // Path compression</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">          89 :         return parent[x];</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         168 :     int find(int x) {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         168 :         if (parent[x] != x)</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">          52 :             parent[x] = find(parent[x]);  // Path compression</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         168 :         return parent[x];</span></span>
 <span id="L28"><span class="lineNum">      28</span>              :     }</span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          31 :     bool unite(int x, int y) {</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          31 :         int px = find(x), py = find(y);</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          31 :         if (px == py) return false;  // Already connected</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          28 :         parent[py] = px;</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          28 :         return true;</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          58 :     bool unite(int x, int y) {</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          58 :         int px = find(x), py = find(y);</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          58 :         if (px == py) return false;  // Already connected</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          49 :         parent[py] = px;</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          49 :         return true;</span></span>
 <span id="L35"><span class="lineNum">      35</span>              :     }</span>
 <span id="L36"><span class="lineNum">      36</span>              : };</span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
@@ -192,237 +192,237 @@
 <span id="L130"><span class="lineNum">     130</span>              : </span>
 <span id="L131"><span class="lineNum">     131</span>              : // =========== 4 Algorithms ===========</span>
 <span id="L132"><span class="lineNum">     132</span>              : </span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">           7 : int findMSTWeight(const Graph&amp; graph) {</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">           7 :     int n = graph.getVertexCount();</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">           7 :     vector&lt;tuple&lt;int, int, int&gt;&gt; edges;  // tuple = (wieght, src, dst)</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          12 : int findMSTWeight(const Graph&amp; graph) {</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          12 :     int n = graph.getVertexCount();</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          12 :     vector&lt;tuple&lt;int, int, int&gt;&gt; edges;  // tuple = (wieght, src, dst)</span></span>
 <span id="L136"><span class="lineNum">     136</span>              : </span>
 <span id="L137"><span class="lineNum">     137</span>              :     // Collect all edges </span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          49 :     for (int u = 0; u &lt; n; ++u) {</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          98 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          56 :             if (u &lt; e.dst) {</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          31 :                 edges.push_back({e.weight, u, e.dst});</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          84 :     for (int u = 0; u &lt; n; ++u) {</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         176 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         104 :             if (u &lt; e.dst) {</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          58 :                 edges.push_back({e.weight, u, e.dst});</span></span>
 <span id="L142"><span class="lineNum">     142</span>              :             }</span>
 <span id="L143"><span class="lineNum">     143</span>              :         }</span>
 <span id="L144"><span class="lineNum">     144</span>              :     }</span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           7 :     sort(edges.begin(), edges.end());</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          12 :     sort(edges.begin(), edges.end());</span></span>
 <span id="L147"><span class="lineNum">     147</span>              : </span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           7 :     UF uf(n);</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           7 :     int mstWeight = 0;</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          12 :     UF uf(n);</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          12 :     int mstWeight = 0;</span></span>
 <span id="L150"><span class="lineNum">     150</span>              : </span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          38 :     for (auto [weight, u, v] : edges) {</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          31 :         if (uf.unite(u, v)) {</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          28 :             mstWeight += weight;</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          70 :     for (auto [weight, u, v] : edges) {</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          58 :         if (uf.unite(u, v)) {</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          49 :             mstWeight += weight;</span></span>
 <span id="L154"><span class="lineNum">     154</span>              :         }</span>
 <span id="L155"><span class="lineNum">     155</span>              :     }</span>
 <span id="L156"><span class="lineNum">     156</span>              : </span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           7 :     return mstWeight;</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           7 : }</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          12 :     return mstWeight;</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">          12 : }</span></span>
 <span id="L159"><span class="lineNum">     159</span>              : //-----------------------------------------------------------------</span>
 <span id="L160"><span class="lineNum">     160</span>              : </span>
 <span id="L161"><span class="lineNum">     161</span>              : // Helper function: transpose the graph</span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           7 : Graph transposeGraph(const Graph&amp; graph) {</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           7 :     int n = graph.getVertexCount();</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           7 :     Graph transposed(n, true); // Directed</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          12 : Graph transposeGraph(const Graph&amp; graph) {</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          12 :     int n = graph.getVertexCount();</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          12 :     Graph transposed(n, true); // Directed</span></span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          49 :     for (int u = 0; u &lt; n; ++u) {</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          98 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          56 :             transposed.addEdge(e.dst, u, e.weight);  // Reverse edge</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          84 :     for (int u = 0; u &lt; n; ++u) {</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         176 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         104 :             transposed.addEdge(e.dst, u, e.weight);  // Reverse edge</span></span>
 <span id="L169"><span class="lineNum">     169</span>              :         }</span>
 <span id="L170"><span class="lineNum">     170</span>              :     }</span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           7 :     return transposed;</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">          12 :     return transposed;</span></span>
 <span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
 <span id="L174"><span class="lineNum">     174</span>              : // First DFS pass</span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          42 : void dfsOrder(const Graph&amp; graph, int v, vector&lt;bool&gt;&amp; visited, stack&lt;int&gt;&amp; finishOrder) {</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          42 :     visited[v] = true;</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          98 :     for (const Edge&amp; e : graph.getNeighbors(v)) {</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          56 :         if (!visited[e.dst]) {</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          34 :             dfsOrder(graph, e.dst, visited, finishOrder);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          72 : void dfsOrder(const Graph&amp; graph, int v, vector&lt;bool&gt;&amp; visited, stack&lt;int&gt;&amp; finishOrder) {</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          72 :     visited[v] = true;</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">         176 :     for (const Edge&amp; e : graph.getNeighbors(v)) {</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">         104 :         if (!visited[e.dst]) {</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          57 :             dfsOrder(graph, e.dst, visited, finishOrder);</span></span>
 <span id="L180"><span class="lineNum">     180</span>              :         }</span>
 <span id="L181"><span class="lineNum">     181</span>              :     }</span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          42 :     finishOrder.push(v);</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          42 : }</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          72 :     finishOrder.push(v);</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L184"><span class="lineNum">     184</span>              : </span>
 <span id="L185"><span class="lineNum">     185</span>              : // Second DFS pass to collect SCCs</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          42 : void dfsCollect(const Graph&amp; graph, int v, vector&lt;bool&gt;&amp; visited, vector&lt;int&gt;&amp; component) {</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          42 :     visited[v] = true;</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          42 :     component.push_back(v);</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          98 :     for (const Edge&amp; e : graph.getNeighbors(v)) {</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          56 :         if (!visited[e.dst]) {</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          29 :             dfsCollect(graph, e.dst, visited, component);</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          72 : void dfsCollect(const Graph&amp; graph, int v, vector&lt;bool&gt;&amp; visited, vector&lt;int&gt;&amp; component) {</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          72 :     visited[v] = true;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          72 :     component.push_back(v);</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">         176 :     for (const Edge&amp; e : graph.getNeighbors(v)) {</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">         104 :         if (!visited[e.dst]) {</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          50 :             dfsCollect(graph, e.dst, visited, component);</span></span>
 <span id="L192"><span class="lineNum">     192</span>              :         }</span>
 <span id="L193"><span class="lineNum">     193</span>              :     }</span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          42 : }</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L195"><span class="lineNum">     195</span>              : </span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           7 : vector&lt;vector&lt;int&gt;&gt; findSCC(const Graph&amp; graph) {</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           7 :     int n = graph.getVertexCount();</span></span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">           7 :     vector&lt;bool&gt; visited(n, false);</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           7 :     stack&lt;int&gt; finishOrder;</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          12 : vector&lt;vector&lt;int&gt;&gt; findSCC(const Graph&amp; graph) {</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">          12 :     int n = graph.getVertexCount();</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          12 :     vector&lt;bool&gt; visited(n, false);</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          12 :     stack&lt;int&gt; finishOrder;</span></span>
 <span id="L200"><span class="lineNum">     200</span>              : </span>
 <span id="L201"><span class="lineNum">     201</span>              :     // First DFS to fill finish order</span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          49 :     for (int v = 0; v &lt; n; ++v) {</span></span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          42 :         if (!visited[v])</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           8 :             dfsOrder(graph, v, visited, finishOrder);</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          84 :     for (int v = 0; v &lt; n; ++v) {</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          72 :         if (!visited[v])</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">          15 :             dfsOrder(graph, v, visited, finishOrder);</span></span>
 <span id="L205"><span class="lineNum">     205</span>              :     }</span>
 <span id="L206"><span class="lineNum">     206</span>              : </span>
 <span id="L207"><span class="lineNum">     207</span>              :     // Transpose the graph</span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           7 :     Graph transposed = transposeGraph(graph);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          12 :     Graph transposed = transposeGraph(graph);</span></span>
 <span id="L209"><span class="lineNum">     209</span>              : </span>
 <span id="L210"><span class="lineNum">     210</span>              :     // Second DFS using reversed graph</span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           7 :     visited.assign(n, false);</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           7 :     vector&lt;vector&lt;int&gt;&gt; components;</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          12 :     visited.assign(n, false);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          12 :     vector&lt;vector&lt;int&gt;&gt; components;</span></span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          56 :     while (!finishOrder.empty()) {</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          42 :         int v = finishOrder.top();</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          42 :         finishOrder.pop();</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">          42 :         if (!visited[v]) {</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          13 :             vector&lt;int&gt; component;</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">          13 :             dfsCollect(transposed, v, visited, component);</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">          13 :             components.push_back(component);</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          13 :         }</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          96 :     while (!finishOrder.empty()) {</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          72 :         int v = finishOrder.top();</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          72 :         finishOrder.pop();</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">          72 :         if (!visited[v]) {</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          22 :             vector&lt;int&gt; component;</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">          22 :             dfsCollect(transposed, v, visited, component);</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">          22 :             components.push_back(component);</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          22 :         }</span></span>
 <span id="L222"><span class="lineNum">     222</span>              :     }</span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           7 :     return components;</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">           7 : }</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          12 :     return components;</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          12 : }</span></span>
 <span id="L225"><span class="lineNum">     225</span>              : //---------------------------------------------------------</span>
 <span id="L226"><span class="lineNum">     226</span>              : </span>
 <span id="L227"><span class="lineNum">     227</span>              : // Build adjacency set for fast lookup</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           7 : vector&lt;set&lt;int&gt;&gt; buildAdjacencySet(const Graph&amp; graph) {</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           7 :     int n = graph.getVertexCount();</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">           7 :     vector&lt;set&lt;int&gt;&gt; adjSet(n);</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          12 : vector&lt;set&lt;int&gt;&gt; buildAdjacencySet(const Graph&amp; graph) {</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          12 :     int n = graph.getVertexCount();</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">          12 :     vector&lt;set&lt;int&gt;&gt; adjSet(n);</span></span>
 <span id="L231"><span class="lineNum">     231</span>              : </span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          49 :     for (int u = 0; u &lt; n; ++u) {</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          98 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          56 :             adjSet[u].insert(e.dst);</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          84 :     for (int u = 0; u &lt; n; ++u) {</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         176 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         104 :             adjSet[u].insert(e.dst);</span></span>
 <span id="L235"><span class="lineNum">     235</span>              :         }</span>
 <span id="L236"><span class="lineNum">     236</span>              :     }</span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           7 :     return adjSet;</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">          12 :     return adjSet;</span></span>
 <span id="L238"><span class="lineNum">     238</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L239"><span class="lineNum">     239</span>              : </span>
 <span id="L240"><span class="lineNum">     240</span>              : // Bron Kerbosch recursive function</span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          67 : void bronKerbosch(const vector&lt;set&lt;int&gt;&gt;&amp; adjSet, </span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         119 : void bronKerbosch(const vector&lt;set&lt;int&gt;&gt;&amp; adjSet, </span></span>
 <span id="L242"><span class="lineNum">     242</span>              :                   vector&lt;int&gt;&amp; R, </span>
 <span id="L243"><span class="lineNum">     243</span>              :                   set&lt;int&gt;&amp; P, </span>
 <span id="L244"><span class="lineNum">     244</span>              :                   set&lt;int&gt;&amp; X, </span>
 <span id="L245"><span class="lineNum">     245</span>              :                   vector&lt;int&gt;&amp; maxClique) {</span>
 <span id="L246"><span class="lineNum">     246</span>              :     </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          67 :     if (P.empty() &amp;&amp; X.empty()) {</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          25 :         if (R.size() &gt; maxClique.size())</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           7 :             maxClique = R;</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          25 :         return;</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         119 :     if (P.empty() &amp;&amp; X.empty()) {</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          46 :         if (R.size() &gt; maxClique.size())</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          14 :             maxClique = R;</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          46 :         return;</span></span>
 <span id="L251"><span class="lineNum">     251</span>              :     }</span>
 <span id="L252"><span class="lineNum">     252</span>              : </span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          42 :     int pivot = -1;</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          42 :     if (!P.empty()) pivot = *P.begin();</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          73 :     int pivot = -1;</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          73 :     if (!P.empty()) pivot = *P.begin();</span></span>
 <span id="L255"><span class="lineNum">     255</span>              : </span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          42 :     set&lt;int&gt; candidates;</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">         109 :     for (int v : P) {</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">          67 :         if (pivot == -1 || adjSet[pivot].count(v) == 0) {</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          60 :             candidates.insert(v);</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          73 :     set&lt;int&gt; candidates;</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">         195 :     for (int v : P) {</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">         122 :         if (pivot == -1 || adjSet[pivot].count(v) == 0) {</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">         107 :             candidates.insert(v);</span></span>
 <span id="L260"><span class="lineNum">     260</span>              :         }</span>
 <span id="L261"><span class="lineNum">     261</span>              :     }</span>
 <span id="L262"><span class="lineNum">     262</span>              : </span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">         102 :     for (int v : candidates) {</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">          60 :         R.push_back(v);</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">         180 :     for (int v : candidates) {</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">         107 :         R.push_back(v);</span></span>
 <span id="L265"><span class="lineNum">     265</span>              : </span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          60 :         set&lt;int&gt; newP;</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">         225 :         for (int u : P) {</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">         165 :             if (adjSet[v].count(u)) newP.insert(u);</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">         107 :         set&lt;int&gt; newP;</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">         399 :         for (int u : P) {</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">         292 :             if (adjSet[v].count(u)) newP.insert(u);</span></span>
 <span id="L269"><span class="lineNum">     269</span>              :         }</span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          60 :         set&lt;int&gt; newX;</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         144 :         for (int u : X) {</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          84 :             if (adjSet[v].count(u)) newX.insert(u);</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">         107 :         set&lt;int&gt; newX;</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         252 :         for (int u : X) {</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         145 :             if (adjSet[v].count(u)) newX.insert(u);</span></span>
 <span id="L274"><span class="lineNum">     274</span>              :         }</span>
 <span id="L275"><span class="lineNum">     275</span>              : </span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">          60 :         bronKerbosch(adjSet, R, newP, newX, maxClique);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         107 :         bronKerbosch(adjSet, R, newP, newX, maxClique);</span></span>
 <span id="L277"><span class="lineNum">     277</span>              : </span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">          60 :         R.pop_back();</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          60 :         P.erase(v);</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          60 :         X.insert(v);</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          60 :     }</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          42 : }</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         107 :         R.pop_back();</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         107 :         P.erase(v);</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         107 :         X.insert(v);</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         107 :     }</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          73 : }</span></span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           7 : vector&lt;int&gt; findMaxClique(const Graph&amp; graph) {</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           7 :     int n = graph.getVertexCount();</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           7 :     vector&lt;set&lt;int&gt;&gt; adjSet = buildAdjacencySet(graph);</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          12 : vector&lt;int&gt; findMaxClique(const Graph&amp; graph) {</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          12 :     int n = graph.getVertexCount();</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          12 :     vector&lt;set&lt;int&gt;&gt; adjSet = buildAdjacencySet(graph);</span></span>
 <span id="L287"><span class="lineNum">     287</span>              : </span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           7 :     vector&lt;int&gt; R;</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">           7 :     set&lt;int&gt; P, X;</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          12 :     vector&lt;int&gt; R;</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">          12 :     set&lt;int&gt; P, X;</span></span>
 <span id="L290"><span class="lineNum">     290</span>              : </span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          49 :     for (int i = 0; i &lt; n; ++i) {</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          42 :         P.insert(i);</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          84 :     for (int i = 0; i &lt; n; ++i) {</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          72 :         P.insert(i);</span></span>
 <span id="L293"><span class="lineNum">     293</span>              :     }</span>
 <span id="L294"><span class="lineNum">     294</span>              : </span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           7 :     vector&lt;int&gt; maxClique;</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           7 :     bronKerbosch(adjSet, R, P, X, maxClique);</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           7 :     return maxClique;</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           7 : }</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          12 :     vector&lt;int&gt; maxClique;</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          12 :     bronKerbosch(adjSet, R, P, X, maxClique);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          12 :     return maxClique;</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          12 : }</span></span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
 <span id="L300"><span class="lineNum">     300</span>              : //------------------------------------------------------------</span>
 <span id="L301"><span class="lineNum">     301</span>              : </span>
 <span id="L302"><span class="lineNum">     302</span>              : // BFS to find augmenting path (Edmonds-Karp)</span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          14 : bool bfs(const vector&lt;vector&lt;int&gt;&gt;&amp; residual, int s, int t, vector&lt;int&gt;&amp; parent) {</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          14 :     int n = residual.size();</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          14 :     fill(parent.begin(), parent.end(), -1);</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          14 :     parent[s] = s;</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          25 : bool bfs(const vector&lt;vector&lt;int&gt;&gt;&amp; residual, int s, int t, vector&lt;int&gt;&amp; parent) {</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          25 :     int n = residual.size();</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          25 :     fill(parent.begin(), parent.end(), -1);</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          25 :     parent[s] = s;</span></span>
 <span id="L307"><span class="lineNum">     307</span>              : </span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          14 :     queue&lt;int&gt; q;</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          14 :     q.push(s);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          25 :     queue&lt;int&gt; q;</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          25 :     q.push(s);</span></span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          39 :     while (!q.empty()) {</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          32 :         int u = q.front(); q.pop();</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         217 :         for (int v = 0; v &lt; n; v++) {</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">         192 :             if (parent[v] == -1 &amp;&amp; residual[u][v] &gt; 0) {</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          28 :                 parent[v] = u;</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          28 :                 if (v == t)</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           7 :                     return true;</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">          21 :                 q.push(v);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          69 :     while (!q.empty()) {</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          57 :         int u = q.front(); q.pop();</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         386 :         for (int v = 0; v &lt; n; v++) {</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">         342 :             if (parent[v] == -1 &amp;&amp; residual[u][v] &gt; 0) {</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          54 :                 parent[v] = u;</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          54 :                 if (v == t)</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">          13 :                     return true;</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">          41 :                 q.push(v);</span></span>
 <span id="L319"><span class="lineNum">     319</span>              :             }</span>
 <span id="L320"><span class="lineNum">     320</span>              :         }</span>
 <span id="L321"><span class="lineNum">     321</span>              :     }</span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">           7 :     return false;</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">          14 : }</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          12 :     return false;</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">          25 : }</span></span>
 <span id="L324"><span class="lineNum">     324</span>              : </span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           7 : int findMaxFlow(const Graph&amp; graph) {</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           7 :     int n = graph.getVertexCount();</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           7 :     vector&lt;vector&lt;int&gt;&gt; residual(n, vector&lt;int&gt;(n, 0));</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">          12 : int findMaxFlow(const Graph&amp; graph) {</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">          12 :     int n = graph.getVertexCount();</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          12 :     vector&lt;vector&lt;int&gt;&gt; residual(n, vector&lt;int&gt;(n, 0));</span></span>
 <span id="L328"><span class="lineNum">     328</span>              : </span>
 <span id="L329"><span class="lineNum">     329</span>              :     // Build residual graph from your existing adjList</span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">          49 :     for (int u = 0; u &lt; n; ++u) {</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          98 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          56 :             residual[u][e.dst] += e.weight; </span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">          84 :     for (int u = 0; u &lt; n; ++u) {</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         176 :         for (const Edge&amp; e : graph.getNeighbors(u)) {</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         104 :             residual[u][e.dst] += e.weight; </span></span>
 <span id="L333"><span class="lineNum">     333</span>              :         }</span>
 <span id="L334"><span class="lineNum">     334</span>              :     }</span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           7 :     int maxFlow = 0;</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">           7 :     vector&lt;int&gt; parent(n);</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">          12 :     int maxFlow = 0;</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          12 :     vector&lt;int&gt; parent(n);</span></span>
 <span id="L338"><span class="lineNum">     338</span>              : </span>
 <span id="L339"><span class="lineNum">     339</span>              :     // Keep finding augmenting paths using BFS</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          14 :     while (bfs(residual, 0, n - 1, parent)) {</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          25 :     while (bfs(residual, 0, n - 1, parent)) {</span></span>
 <span id="L341"><span class="lineNum">     341</span>              :         // Find minimum residual capacity along the path</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           7 :         int pathFlow = INT_MAX;</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           7 :         int v = n - 1;</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">          29 :         while (v != 0) {</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          22 :             int u = parent[v];</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          22 :             pathFlow = min(pathFlow, residual[u][v]);</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          22 :             v = u;</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          13 :         int pathFlow = INT_MAX;</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">          13 :         int v = n - 1;</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">          53 :         while (v != 0) {</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          40 :             int u = parent[v];</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          40 :             pathFlow = min(pathFlow, residual[u][v]);</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          40 :             v = u;</span></span>
 <span id="L348"><span class="lineNum">     348</span>              :         }</span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
 <span id="L350"><span class="lineNum">     350</span>              :         // Update residual capacities along the path</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">           7 :         v = n - 1;</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">          29 :         while (v != 0) {</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          22 :             int u = parent[v];</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">          22 :             residual[u][v] -= pathFlow;</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          22 :             residual[v][u] += pathFlow;</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          22 :             v = u;</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          13 :         v = n - 1;</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">          53 :         while (v != 0) {</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          40 :             int u = parent[v];</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">          40 :             residual[u][v] -= pathFlow;</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          40 :             residual[v][u] += pathFlow;</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          40 :             v = u;</span></span>
 <span id="L357"><span class="lineNum">     357</span>              :         }</span>
 <span id="L358"><span class="lineNum">     358</span>              : </span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">           7 :         maxFlow += pathFlow;</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">          13 :         maxFlow += pathFlow;</span></span>
 <span id="L360"><span class="lineNum">     360</span>              :     }</span>
 <span id="L361"><span class="lineNum">     361</span>              : </span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">           7 :     return maxFlow;</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">           7 : }</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          12 :     return maxFlow;</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          12 : }</span></span>
 <span id="L364"><span class="lineNum">     364</span>              : </span>
 <span id="L365"><span class="lineNum">     365</span>              : </span>
 <span id="L366"><span class="lineNum">     366</span>              : } // namespace GraphAlgo</span>

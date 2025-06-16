@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -228,7 +228,7 @@
 <span id="L166"><span class="lineNum">     166</span>              : #if __cplusplus &lt; 201103L</span>
 <span id="L167"><span class="lineNum">     167</span>              :       set() : _M_t() { }</span>
 <span id="L168"><span class="lineNum">     168</span>              : #else</span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         222 :       set() = default;</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         386 :       set() = default;</span></span>
 <span id="L170"><span class="lineNum">     170</span>              : #endif</span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
 <span id="L172"><span class="lineNum">     172</span>              :       /**</span>
@@ -342,7 +342,7 @@
 <span id="L280"><span class="lineNum">     280</span>              :        *  themselves are pointers, the pointed-to memory is not touched in any</span>
 <span id="L281"><span class="lineNum">     281</span>              :        *  way. Managing the pointer is the user's responsibility.</span>
 <span id="L282"><span class="lineNum">     282</span>              :        */</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         222 :       ~set() = default;</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         386 :       ~set() = default;</span></span>
 <span id="L284"><span class="lineNum">     284</span>              : #endif</span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
 <span id="L286"><span class="lineNum">     286</span>              :       /**</span>
@@ -405,8 +405,8 @@
 <span id="L343"><span class="lineNum">     343</span>              :        *  to the keys.</span>
 <span id="L344"><span class="lineNum">     344</span>              :        */</span>
 <span id="L345"><span class="lineNum">     345</span>              :       iterator</span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         236 :       begin() const _GLIBCXX_NOEXCEPT</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         236 :       { return _M_t.begin(); }</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         416 :       begin() const _GLIBCXX_NOEXCEPT</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         416 :       { return _M_t.begin(); }</span></span>
 <span id="L348"><span class="lineNum">     348</span>              : </span>
 <span id="L349"><span class="lineNum">     349</span>              :       /**</span>
 <span id="L350"><span class="lineNum">     350</span>              :        *  Returns a read-only (constant) iterator that points one past the last</span>
@@ -414,8 +414,8 @@
 <span id="L352"><span class="lineNum">     352</span>              :        *  to the keys.</span>
 <span id="L353"><span class="lineNum">     353</span>              :        */</span>
 <span id="L354"><span class="lineNum">     354</span>              :       iterator</span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         204 :       end() const _GLIBCXX_NOEXCEPT</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">         204 :       { return _M_t.end(); }</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         360 :       end() const _GLIBCXX_NOEXCEPT</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">         360 :       { return _M_t.end(); }</span></span>
 <span id="L357"><span class="lineNum">     357</span>              : </span>
 <span id="L358"><span class="lineNum">     358</span>              :       /**</span>
 <span id="L359"><span class="lineNum">     359</span>              :        *  Returns a read-only (constant) iterator that points to the last</span>
@@ -475,13 +475,13 @@
 <span id="L413"><span class="lineNum">     413</span>              : </span>
 <span id="L414"><span class="lineNum">     414</span>              :       ///  Returns true if the %set is empty.</span>
 <span id="L415"><span class="lineNum">     415</span>              :       _GLIBCXX_NODISCARD bool</span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">         144 :       empty() const _GLIBCXX_NOEXCEPT</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">         144 :       { return _M_t.empty(); }</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">         255 :       empty() const _GLIBCXX_NOEXCEPT</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">         255 :       { return _M_t.empty(); }</span></span>
 <span id="L418"><span class="lineNum">     418</span>              : </span>
 <span id="L419"><span class="lineNum">     419</span>              :       ///  Returns the size of the %set.</span>
 <span id="L420"><span class="lineNum">     420</span>              :       size_type</span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          58 :       size() const _GLIBCXX_NOEXCEPT</span></span>
-<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          58 :       { return _M_t.size(); }</span></span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          39 :       size() const _GLIBCXX_NOEXCEPT</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          39 :       { return _M_t.size(); }</span></span>
 <span id="L423"><span class="lineNum">     423</span>              : </span>
 <span id="L424"><span class="lineNum">     424</span>              :       ///  Returns the maximum size of the %set.</span>
 <span id="L425"><span class="lineNum">     425</span>              :       size_type</span>
@@ -570,11 +570,11 @@
 <span id="L508"><span class="lineNum">     508</span>              :        *  Insertion requires logarithmic time.</span>
 <span id="L509"><span class="lineNum">     509</span>              :        */</span>
 <span id="L510"><span class="lineNum">     510</span>              :       std::pair&lt;iterator, bool&gt;</span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         299 :       insert(const value_type&amp; __x)</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         503 :       insert(const value_type&amp; __x)</span></span>
 <span id="L512"><span class="lineNum">     512</span>              :       {</span>
 <span id="L513"><span class="lineNum">     513</span>              :         std::pair&lt;typename _Rep_type::iterator, bool&gt; __p =</span>
-<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">         299 :           _M_t._M_insert_unique(__x);</span></span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">         299 :         return std::pair&lt;iterator, bool&gt;(__p.first, __p.second);</span></span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">         503 :           _M_t._M_insert_unique(__x);</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">         503 :         return std::pair&lt;iterator, bool&gt;(__p.first, __p.second);</span></span>
 <span id="L516"><span class="lineNum">     516</span>              :       }</span>
 <span id="L517"><span class="lineNum">     517</span>              : </span>
 <span id="L518"><span class="lineNum">     518</span>              : #if __cplusplus &gt;= 201103L</span>
@@ -745,8 +745,8 @@
 <span id="L683"><span class="lineNum">     683</span>              :        *  in any way.  Managing the pointer is the user's responsibility.</span>
 <span id="L684"><span class="lineNum">     684</span>              :        */</span>
 <span id="L685"><span class="lineNum">     685</span>              :       size_type</span>
-<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">          60 :       erase(const key_type&amp; __x)</span></span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">          60 :       { return _M_t.erase(__x); }</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">         107 :       erase(const key_type&amp; __x)</span></span>
+<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">         107 :       { return _M_t.erase(__x); }</span></span>
 <span id="L688"><span class="lineNum">     688</span>              : </span>
 <span id="L689"><span class="lineNum">     689</span>              : #if __cplusplus &gt;= 201103L</span>
 <span id="L690"><span class="lineNum">     690</span>              :       // _GLIBCXX_RESOLVE_LIB_DEFECTS</span>
@@ -809,8 +809,8 @@
 <span id="L747"><span class="lineNum">     747</span>              :        *  either be 0 (not present) or 1 (present).</span>
 <span id="L748"><span class="lineNum">     748</span>              :        */</span>
 <span id="L749"><span class="lineNum">     749</span>              :       size_type</span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">         354 :       count(const key_type&amp; __x) const</span></span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">         354 :       { return _M_t.find(__x) == _M_t.end() ? 0 : 1; }</span></span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">         586 :       count(const key_type&amp; __x) const</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">         586 :       { return _M_t.find(__x) == _M_t.end() ? 0 : 1; }</span></span>
 <span id="L752"><span class="lineNum">     752</span>              : </span>
 <span id="L753"><span class="lineNum">     753</span>              : #if __cplusplus &gt; 201103L</span>
 <span id="L754"><span class="lineNum">     754</span>              :       template&lt;typename _Kt&gt;</span>

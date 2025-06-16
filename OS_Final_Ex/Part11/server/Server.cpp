@@ -8,6 +8,8 @@
 #include <set>
 #include <vector>      
 #include <utility>
+#include <mutex>
+#include <atomic>
 #include "BlockingQueue.hpp"
 #include "PipelineData.hpp"
 #include "../core/GraphAlgorithms.hpp"
@@ -16,11 +18,11 @@
 using namespace std;
 using namespace GraphAlgo;
 
-#define PORT 8080
+#define PORT 5050
 #define MAX_BUFFER 4096
 
-#include <atomic>
 std::atomic<bool> running(true);
+std::mutex cout_mutex;
 
 // Create blocking queues
 BlockingQueue<PipelineData> queueMST;
@@ -156,7 +158,10 @@ void maxFlowWorker() {
         string fullResponse = data.mstResult + data.sccResult + data.cliqueResult + data.maxFlowResult;
         send(data.client_socket, fullResponse.c_str(), fullResponse.size(), 0);
         close(data.client_socket);
-        cout << "Finished client (fd = " << data.client_socket << ")" << endl;
+        {
+            std::lock_guard<std::mutex> lock(cout_mutex);
+            cout << "Finished client (fd = " << data.client_socket << ")" << endl;
+        }
     }
 }
 
@@ -173,7 +178,10 @@ void handleClient(int client_socket) {
         int mode = readChoice(client_socket);
         if (mode == 0 || mode == -1) {
             close(client_socket);
-            cout << "Client requested shutdown or sent invalid input." << endl;
+            {
+                std::lock_guard<std::mutex> lock(cout_mutex);
+                cout << "Client requested shutdown or sent invalid input." << endl;
+            }
             running = false;
             return;
         }
@@ -215,7 +223,10 @@ void handleClient(int client_socket) {
         PipelineData data(g, client_socket);
         queueMST.push(data);
     } catch (...) {
-        cout << "Client disconnected or error occurred." << endl;
+        {
+            std::lock_guard<std::mutex> lock(cout_mutex);
+            cout << "Client disconnected or error occurred." << endl;
+        }
         close(client_socket);
     }
 }
@@ -242,7 +253,10 @@ int main() {
     bind(server_fd, (struct sockaddr*)&address, sizeof(address));
     listen(server_fd, 3);
 
-    cout << "Pipeline server waiting for connections on port " << PORT << "...\n";
+    {
+        std::lock_guard<std::mutex> lock(cout_mutex);
+        cout << "Pipeline server waiting for connections on port " << PORT << "...\n";
+    }
 
     fd_set readfds;
     struct timeval timeout;
@@ -268,7 +282,10 @@ int main() {
                 cerr << "Failed to accept connection.\n";
                 continue;
             }
-            cout << "Client connected (fd = " << client_socket << ")" << endl;
+            {
+                std::lock_guard<std::mutex> lock(cout_mutex);
+                cout << "Client connected (fd = " << client_socket << ")" << endl;
+            }
             thread t(handleClient, client_socket);
             t.detach();
         }
@@ -288,6 +305,9 @@ int main() {
     t4.join();
 
     close(server_fd);
-    cout << "Server shutdown complete.\n";
+    {
+        std::lock_guard<std::mutex> lock(cout_mutex);
+        cout << "Server shutdown complete.\n";
+    }
     return 0;
 }

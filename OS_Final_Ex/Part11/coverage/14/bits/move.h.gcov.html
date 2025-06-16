@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">69.2&nbsp;%</td>
@@ -110,8 +110,8 @@
 <span id="L48"><span class="lineNum">      48</span>              :    */</span>
 <span id="L49"><span class="lineNum">      49</span>              :   template&lt;typename _Tp&gt;</span>
 <span id="L50"><span class="lineNum">      50</span>              :     inline _GLIBCXX_CONSTEXPR _Tp*</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">        2274 :     __addressof(_Tp&amp; __r) _GLIBCXX_NOEXCEPT</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">        2274 :     { return __builtin_addressof(__r); }</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">        2772 :     __addressof(_Tp&amp; __r) _GLIBCXX_NOEXCEPT</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">        2772 :     { return __builtin_addressof(__r); }</span></span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span>              : #if __cplusplus &gt;= 201103L</span>
 <span id="L55"><span class="lineNum">      55</span>              : </span>
@@ -130,8 +130,8 @@
 <span id="L68"><span class="lineNum">      68</span>              :   template&lt;typename _Tp&gt;</span>
 <span id="L69"><span class="lineNum">      69</span>              :     _GLIBCXX_NODISCARD</span>
 <span id="L70"><span class="lineNum">      70</span>              :     constexpr _Tp&amp;&amp;</span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        8219 :     forward(typename std::remove_reference&lt;_Tp&gt;::type&amp; __t) noexcept</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        8219 :     { return static_cast&lt;_Tp&amp;&amp;&gt;(__t); }</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        8992 :     forward(typename std::remove_reference&lt;_Tp&gt;::type&amp; __t) noexcept</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        8992 :     { return static_cast&lt;_Tp&amp;&amp;&gt;(__t); }</span></span>
 <span id="L73"><span class="lineNum">      73</span>              : </span>
 <span id="L74"><span class="lineNum">      74</span>              :   /**</span>
 <span id="L75"><span class="lineNum">      75</span>              :    *  @brief  Forward an rvalue.</span>
@@ -196,8 +196,8 @@
 <span id="L134"><span class="lineNum">     134</span>              :   template&lt;typename _Tp&gt;</span>
 <span id="L135"><span class="lineNum">     135</span>              :     _GLIBCXX_NODISCARD</span>
 <span id="L136"><span class="lineNum">     136</span>              :     constexpr typename std::remove_reference&lt;_Tp&gt;::type&amp;&amp;</span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         494 :     move(_Tp&amp;&amp; __t) noexcept</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         494 :     { return static_cast&lt;typename std::remove_reference&lt;_Tp&gt;::type&amp;&amp;&gt;(__t); }</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         659 :     move(_Tp&amp;&amp; __t) noexcept</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         659 :     { return static_cast&lt;typename std::remove_reference&lt;_Tp&gt;::type&amp;&amp;&gt;(__t); }</span></span>
 <span id="L139"><span class="lineNum">     139</span>              : </span>
 <span id="L140"><span class="lineNum">     140</span>              : </span>
 <span id="L141"><span class="lineNum">     141</span>              :   template&lt;typename _Tp&gt;</span>

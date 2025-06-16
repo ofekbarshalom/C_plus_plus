@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">25.0&nbsp;%</td>
@@ -444,13 +444,13 @@
 <span id="L382"><span class="lineNum">     382</span>              :       }</span>
 <span id="L383"><span class="lineNum">     383</span>              : </span>
 <span id="L384"><span class="lineNum">     384</span>              :       static _GLIBCXX17_CONSTEXPR size_t</span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          25 :       length(const char_type* __s)</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          18 :       length(const char_type* __s)</span></span>
 <span id="L386"><span class="lineNum">     386</span>              :       {</span>
 <span id="L387"><span class="lineNum">     387</span>              : #if __cplusplus &gt;= 201703L</span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          25 :         if (std::__is_constant_evaluated())</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          18 :         if (std::__is_constant_evaluated())</span></span>
 <span id="L389"><span class="lineNum">     389</span> <span class="tlaUNC">           0 :           return __gnu_cxx::char_traits&lt;char_type&gt;::length(__s);</span></span>
 <span id="L390"><span class="lineNum">     390</span>              : #endif</span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">          25 :         return __builtin_strlen(__s);</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">          18 :         return __builtin_strlen(__s);</span></span>
 <span id="L392"><span class="lineNum">     392</span>              :       }</span>
 <span id="L393"><span class="lineNum">     393</span>              : </span>
 <span id="L394"><span class="lineNum">     394</span>              :       static _GLIBCXX17_CONSTEXPR const char_type*</span>

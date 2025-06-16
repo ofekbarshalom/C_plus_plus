@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:32:31</td>
+            <td class="headerValue">2025-06-16 17:42:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -303,23 +303,23 @@
 <span id="L241"><span class="lineNum">     241</span>              :       struct _Mod&lt;_Tp, __m, __a, __c, true, __s&gt;</span>
 <span id="L242"><span class="lineNum">     242</span>              :       {</span>
 <span id="L243"><span class="lineNum">     243</span>              :         static _Tp</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        4988 :         __calc(_Tp __x)</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        3741 :         __calc(_Tp __x)</span></span>
 <span id="L245"><span class="lineNum">     245</span>              :         {</span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        4988 :           _Tp __res = __a * __x + __c;</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        3741 :           _Tp __res = __a * __x + __c;</span></span>
 <span id="L247"><span class="lineNum">     247</span>              :           if (__m)</span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">        4988 :             __res %= __m;</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        4988 :           return __res;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">        3741 :             __res %= __m;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        3741 :           return __res;</span></span>
 <span id="L250"><span class="lineNum">     250</span>              :         }</span>
 <span id="L251"><span class="lineNum">     251</span>              :       };</span>
 <span id="L252"><span class="lineNum">     252</span>              : </span>
 <span id="L253"><span class="lineNum">     253</span>              :     template&lt;typename _Tp, _Tp __m, _Tp __a = 1, _Tp __c = 0&gt;</span>
 <span id="L254"><span class="lineNum">     254</span>              :       inline _Tp</span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">        4988 :       __mod(_Tp __x)</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">        3741 :       __mod(_Tp __x)</span></span>
 <span id="L256"><span class="lineNum">     256</span>              :       {</span>
 <span id="L257"><span class="lineNum">     257</span>              :         if constexpr (__a == 0)</span>
 <span id="L258"><span class="lineNum">     258</span>              :           return __c;</span>
 <span id="L259"><span class="lineNum">     259</span>              :         else // N.B. _Mod must not be instantiated with a == 0</span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">        4988 :           return _Mod&lt;_Tp, __m, __a, __c&gt;::__calc(__x);</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">        3741 :           return _Mod&lt;_Tp, __m, __a, __c&gt;::__calc(__x);</span></span>
 <span id="L261"><span class="lineNum">     261</span>              :       }</span>
 <span id="L262"><span class="lineNum">     262</span>              : </span>
 <span id="L263"><span class="lineNum">     263</span>              :     /*</span>
@@ -706,8 +706,8 @@
 <span id="L644"><span class="lineNum">     644</span>              :       mersenne_twister_engine() : mersenne_twister_engine(default_seed) { }</span>
 <span id="L645"><span class="lineNum">     645</span>              : </span>
 <span id="L646"><span class="lineNum">     646</span>              :       explicit</span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           4 :       mersenne_twister_engine(result_type __sd)</span></span>
-<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">           4 :       { seed(__sd); }</span></span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           3 :       mersenne_twister_engine(result_type __sd)</span></span>
+<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">           3 :       { seed(__sd); }</span></span>
 <span id="L649"><span class="lineNum">     649</span>              : </span>
 <span id="L650"><span class="lineNum">     650</span>              :       /**</span>
 <span id="L651"><span class="lineNum">     651</span>              :        * @brief Constructs a %mersenne_twister_engine random number generator</span>
