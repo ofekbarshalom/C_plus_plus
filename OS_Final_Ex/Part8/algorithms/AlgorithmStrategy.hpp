@@ -1,7 +1,7 @@
 #ifndef ALGORITHM_STRATEGY_HPP
 #define ALGORITHM_STRATEGY_HPP
 
-#include "Graph.hpp"
+#include "../core/Graph.hpp"
 #include <string>
 
 using namespace GraphAlgo;

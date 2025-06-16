@@ -2,19 +2,32 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 -g
 
-# Common files
-HDR = Graph.hpp GraphAlgorithms.hpp AlgorithmStrategy.hpp \
-      AlgorithmFactory.hpp EulerianAlgorithm.hpp MSTAlgorithm.hpp \
-      SCCAlgorithm.hpp CliqueAlgorithm.hpp MaxFlowAlgorithm.hpp
+# Folders
+ALG_DIR = algorithms
+CORE_DIR = core
+SRV_DIR = server
 
-GRAPH_SRC = Graph.cpp GraphAlgorithms.cpp AlgorithmFactory.cpp
+# Header files
+HDR = $(CORE_DIR)/Graph.hpp \
+      $(CORE_DIR)/GraphAlgorithms.hpp \
+      $(ALG_DIR)/AlgorithmStrategy.hpp \
+      $(ALG_DIR)/AlgorithmFactory.hpp \
+      $(ALG_DIR)/EulerianAlgorithm.hpp \
+      $(ALG_DIR)/MSTAlgorithm.hpp \
+      $(ALG_DIR)/SCCAlgorithm.hpp \
+      $(ALG_DIR)/CliqueAlgorithm.hpp \
+      $(ALG_DIR)/MaxFlowAlgorithm.hpp
+
+# Source files
+GRAPH_SRC = $(CORE_DIR)/Graph.cpp $(CORE_DIR)/GraphAlgorithms.cpp \
+            $(ALG_DIR)/AlgorithmFactory.cpp
 
 # Main executable
 MAIN_SRC = main.cpp
 MAIN_OUT = main
 
 # Server executable
-SERVER_SRC = Server.cpp
+SERVER_SRC = $(SRV_DIR)/Server.cpp
 SERVER_OUT = server
 
 # Build main

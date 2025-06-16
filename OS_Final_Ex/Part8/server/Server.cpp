@@ -5,9 +5,9 @@
 #include <vector>
 #include <netinet/in.h>
 #include <unistd.h>
-#include "Graph.hpp"
-#include "GraphAlgorithms.hpp"
-#include "AlgorithmFactory.hpp"
+#include "../core/Graph.hpp"
+#include "../core/GraphAlgorithms.hpp"
+#include "../algorithms/AlgorithmFactory.hpp"
 
 using namespace std;
 using namespace GraphAlgo;

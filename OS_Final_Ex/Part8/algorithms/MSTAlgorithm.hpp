@@ -1,5 +1,5 @@
-#include "Graph.hpp"
-#include "GraphAlgorithms.hpp"
+#include "../core/Graph.hpp"
+#include "../core/GraphAlgorithms.hpp"
 #include "AlgorithmStrategy.hpp"
 #include <string>
 #include <vector>
