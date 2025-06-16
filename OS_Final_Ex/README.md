@@ -2,6 +2,9 @@
 
 This project implements a multithreaded C++ TCP server that allows users to input or generate graphs and compute multiple graph algorithms in parallel using the pipeline pattern.
 
+> The file structure and explanation apply specifically to **Part 9** of the project.  
+> Earlier parts (1–8) follow separate implementation instructions and may differ in structure.
+
 ## Features
 
 - TCP server that accepts client connections.
@@ -61,10 +64,10 @@ nc localhost 8080
 
 ```
 Choose input mode:
-1 - Enter graph manually
-2 - Generate random graph
-0 - Exit
-2
+0 - Exit server
+1 - Generate random graph
+2 - Enter graph manually
+1
 Enter: vertices edges seed directed(0=dir,1=undir):
 6 7 42 1
 ```
