@@ -83,6 +83,7 @@ Max Flow: 9
 
 ## File Structure
 
+```
 ├── algorithms/
 │   ├── AlgorithmFactory.cpp / .hpp      # Factory pattern to instantiate algorithms
 │   ├── AlgorithmStrategy.hpp            # Base strategy interface
@@ -102,7 +103,9 @@ Max Flow: 9
 │   └── Server.cpp                       # TCP server handling client requests
 │
 ├── main.cpp                             # CLI tool to generate and test graphs
-├── makefile 
+├── makefile                             # Build script
+```
+
 
 ## Dependencies
 
