@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">89.1&nbsp;%</td>
+            <td class="headerCovTableEntryHi">91.3&nbsp;%</td>
             <td class="headerCovTableEntry">46</td>
-            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">42</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:42:13</td>
+            <td class="headerValue">2025-06-16 18:27:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">91.7&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">12</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -419,7 +419,7 @@
 <span id="L357"><span class="lineNum">     357</span>              :           for (size_type __i = 0; __i &lt;= _S_local_capacity; ++__i)</span>
 <span id="L358"><span class="lineNum">     358</span>              :             _M_local_buf[__i] = _CharT();</span>
 <span id="L359"><span class="lineNum">     359</span>              : #endif</span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           1 :       }</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :       }</span></span>
 <span id="L361"><span class="lineNum">     361</span>              : </span>
 <span id="L362"><span class="lineNum">     362</span>              :       __attribute__((__always_inline__))</span>
 <span id="L363"><span class="lineNum">     363</span>              :       _GLIBCXX14_CONSTEXPR</span>
@@ -705,16 +705,16 @@
 <span id="L643"><span class="lineNum">     643</span>              :       template&lt;typename = _RequireAllocator&lt;_Alloc&gt;&gt;</span>
 <span id="L644"><span class="lineNum">     644</span>              : #endif</span>
 <span id="L645"><span class="lineNum">     645</span>              :       _GLIBCXX20_CONSTEXPR</span>
-<span id="L646"><span class="lineNum">     646</span> <span class="tlaGNC">          18 :       basic_string(const _CharT* __s, const _Alloc&amp; __a = _Alloc())</span></span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">          18 :       : _M_dataplus(_M_local_data(), __a)</span></span>
+<span id="L646"><span class="lineNum">     646</span> <span class="tlaGNC">           9 :       basic_string(const _CharT* __s, const _Alloc&amp; __a = _Alloc())</span></span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           9 :       : _M_dataplus(_M_local_data(), __a)</span></span>
 <span id="L648"><span class="lineNum">     648</span>              :       {</span>
 <span id="L649"><span class="lineNum">     649</span>              :         // NB: Not required, but considered best practice.</span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">          18 :         if (__s == 0)</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">           9 :         if (__s == 0)</span></span>
 <span id="L651"><span class="lineNum">     651</span> <span class="tlaUNC">           0 :           std::__throw_logic_error(__N(&quot;basic_string: &quot;</span></span>
 <span id="L652"><span class="lineNum">     652</span>              :                                        &quot;construction from null is not valid&quot;));</span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">          18 :         const _CharT* __end = __s + traits_type::length(__s);</span></span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">          18 :         _M_construct(__s, __end, forward_iterator_tag());</span></span>
-<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">          18 :       }</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">           9 :         const _CharT* __end = __s + traits_type::length(__s);</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">           9 :         _M_construct(__s, __end, forward_iterator_tag());</span></span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">           9 :       }</span></span>
 <span id="L656"><span class="lineNum">     656</span>              : </span>
 <span id="L657"><span class="lineNum">     657</span>              :       /**</span>
 <span id="L658"><span class="lineNum">     658</span>              :        *  @brief  Construct string as multiple characters.</span>
@@ -3632,7 +3632,7 @@
 <span id="L3570"><span class="lineNum">    3570</span>              :   template&lt;typename _Str&gt;</span>
 <span id="L3571"><span class="lineNum">    3571</span>              :     _GLIBCXX20_CONSTEXPR</span>
 <span id="L3572"><span class="lineNum">    3572</span>              :     inline _Str</span>
-<span id="L3573"><span class="lineNum">    3573</span> <span class="tlaGNC">           5 :     __str_concat(typename _Str::value_type const* __lhs,</span></span>
+<span id="L3573"><span class="lineNum">    3573</span> <span class="tlaGNC">           4 :     __str_concat(typename _Str::value_type const* __lhs,</span></span>
 <span id="L3574"><span class="lineNum">    3574</span>              :                  typename _Str::size_type __lhs_len,</span>
 <span id="L3575"><span class="lineNum">    3575</span>              :                  typename _Str::value_type const* __rhs,</span>
 <span id="L3576"><span class="lineNum">    3576</span>              :                  typename _Str::size_type __rhs_len,</span>
@@ -3640,11 +3640,11 @@
 <span id="L3578"><span class="lineNum">    3578</span>              :     {</span>
 <span id="L3579"><span class="lineNum">    3579</span>              :       typedef typename _Str::allocator_type allocator_type;</span>
 <span id="L3580"><span class="lineNum">    3580</span>              :       typedef __gnu_cxx::__alloc_traits&lt;allocator_type&gt; _Alloc_traits;</span>
-<span id="L3581"><span class="lineNum">    3581</span> <span class="tlaGNC">           5 :       _Str __str(_Alloc_traits::_S_select_on_copy(__a));</span></span>
-<span id="L3582"><span class="lineNum">    3582</span> <span class="tlaGNC">           5 :       __str.reserve(__lhs_len + __rhs_len);</span></span>
-<span id="L3583"><span class="lineNum">    3583</span> <span class="tlaGNC">           5 :       __str.append(__lhs, __lhs_len);</span></span>
-<span id="L3584"><span class="lineNum">    3584</span> <span class="tlaGNC">           5 :       __str.append(__rhs, __rhs_len);</span></span>
-<span id="L3585"><span class="lineNum">    3585</span> <span class="tlaGNC">           5 :       return __str;</span></span>
+<span id="L3581"><span class="lineNum">    3581</span> <span class="tlaGNC">           4 :       _Str __str(_Alloc_traits::_S_select_on_copy(__a));</span></span>
+<span id="L3582"><span class="lineNum">    3582</span> <span class="tlaGNC">           4 :       __str.reserve(__lhs_len + __rhs_len);</span></span>
+<span id="L3583"><span class="lineNum">    3583</span> <span class="tlaGNC">           4 :       __str.append(__lhs, __lhs_len);</span></span>
+<span id="L3584"><span class="lineNum">    3584</span> <span class="tlaGNC">           4 :       __str.append(__rhs, __rhs_len);</span></span>
+<span id="L3585"><span class="lineNum">    3585</span> <span class="tlaGNC">           4 :       return __str;</span></span>
 <span id="L3586"><span class="lineNum">    3586</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L3587"><span class="lineNum">    3587</span>              : </span>
 <span id="L3588"><span class="lineNum">    3588</span>              :   // operator+</span>
@@ -3657,13 +3657,13 @@
 <span id="L3595"><span class="lineNum">    3595</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3596"><span class="lineNum">    3596</span>              :     _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
 <span id="L3597"><span class="lineNum">    3597</span>              :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;</span>
-<span id="L3598"><span class="lineNum">    3598</span> <span class="tlaGNC">           5 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></span>
+<span id="L3598"><span class="lineNum">    3598</span> <span class="tlaGNC">           2 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></span>
 <span id="L3599"><span class="lineNum">    3599</span>              :               const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __rhs)</span>
 <span id="L3600"><span class="lineNum">    3600</span>              :     {</span>
 <span id="L3601"><span class="lineNum">    3601</span>              :       typedef basic_string&lt;_CharT, _Traits, _Alloc&gt; _Str;</span>
 <span id="L3602"><span class="lineNum">    3602</span>              :       return std::__str_concat&lt;_Str&gt;(__lhs.c_str(), __lhs.size(),</span>
 <span id="L3603"><span class="lineNum">    3603</span>              :                                      __rhs.c_str(), __rhs.size(),</span>
-<span id="L3604"><span class="lineNum">    3604</span> <span class="tlaGNC">          10 :                                      __lhs.get_allocator());</span></span>
+<span id="L3604"><span class="lineNum">    3604</span> <span class="tlaGNC">           4 :                                      __lhs.get_allocator());</span></span>
 <span id="L3605"><span class="lineNum">    3605</span>              :     }</span>
 <span id="L3606"><span class="lineNum">    3606</span>              : </span>
 <span id="L3607"><span class="lineNum">    3607</span>              :   /**</span>
@@ -3711,14 +3711,14 @@
 <span id="L3649"><span class="lineNum">    3649</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3650"><span class="lineNum">    3650</span>              :     _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
 <span id="L3651"><span class="lineNum">    3651</span>              :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;</span>
-<span id="L3652"><span class="lineNum">    3652</span> <span class="tlaUNC">           0 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></span>
+<span id="L3652"><span class="lineNum">    3652</span> <span class="tlaGNC">           2 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></span>
 <span id="L3653"><span class="lineNum">    3653</span>              :               const _CharT* __rhs)</span>
 <span id="L3654"><span class="lineNum">    3654</span>              :     {</span>
 <span id="L3655"><span class="lineNum">    3655</span>              :       __glibcxx_requires_string(__rhs);</span>
 <span id="L3656"><span class="lineNum">    3656</span>              :       typedef basic_string&lt;_CharT, _Traits, _Alloc&gt; _Str;</span>
 <span id="L3657"><span class="lineNum">    3657</span>              :       return std::__str_concat&lt;_Str&gt;(__lhs.c_str(), __lhs.size(),</span>
 <span id="L3658"><span class="lineNum">    3658</span>              :                                      __rhs, _Traits::length(__rhs),</span>
-<span id="L3659"><span class="lineNum">    3659</span> <span class="tlaUNC">           0 :                                      __lhs.get_allocator());</span></span>
+<span id="L3659"><span class="lineNum">    3659</span> <span class="tlaGNC">           4 :                                      __lhs.get_allocator());</span></span>
 <span id="L3660"><span class="lineNum">    3660</span>              :     }</span>
 <span id="L3661"><span class="lineNum">    3661</span>              :   /**</span>
 <span id="L3662"><span class="lineNum">    3662</span>              :    *  @brief  Concatenate string and character.</span>
@@ -3741,9 +3741,9 @@
 <span id="L3679"><span class="lineNum">    3679</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3680"><span class="lineNum">    3680</span>              :     _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
 <span id="L3681"><span class="lineNum">    3681</span>              :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;</span>
-<span id="L3682"><span class="lineNum">    3682</span> <span class="tlaGNC">          10 :     operator+(basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;&amp; __lhs,</span></span>
+<span id="L3682"><span class="lineNum">    3682</span> <span class="tlaGNC">           4 :     operator+(basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;&amp; __lhs,</span></span>
 <span id="L3683"><span class="lineNum">    3683</span>              :               const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __rhs)</span>
-<span id="L3684"><span class="lineNum">    3684</span> <span class="tlaGNC">          10 :     { return std::move(__lhs.append(__rhs)); }</span></span>
+<span id="L3684"><span class="lineNum">    3684</span> <span class="tlaGNC">           4 :     { return std::move(__lhs.append(__rhs)); }</span></span>
 <span id="L3685"><span class="lineNum">    3685</span>              : </span>
 <span id="L3686"><span class="lineNum">    3686</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3687"><span class="lineNum">    3687</span>              :     _GLIBCXX20_CONSTEXPR</span>
@@ -3778,9 +3778,9 @@
 <span id="L3716"><span class="lineNum">    3716</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3717"><span class="lineNum">    3717</span>              :     _GLIBCXX_NODISCARD _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
 <span id="L3718"><span class="lineNum">    3718</span>              :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;</span>
-<span id="L3719"><span class="lineNum">    3719</span> <span class="tlaGNC">          20 :     operator+(const _CharT* __lhs,</span></span>
+<span id="L3719"><span class="lineNum">    3719</span> <span class="tlaGNC">           8 :     operator+(const _CharT* __lhs,</span></span>
 <span id="L3720"><span class="lineNum">    3720</span>              :               basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;&amp; __rhs)</span>
-<span id="L3721"><span class="lineNum">    3721</span> <span class="tlaGNC">          20 :     { return std::move(__rhs.insert(0, __lhs)); }</span></span>
+<span id="L3721"><span class="lineNum">    3721</span> <span class="tlaGNC">           8 :     { return std::move(__rhs.insert(0, __lhs)); }</span></span>
 <span id="L3722"><span class="lineNum">    3722</span>              : </span>
 <span id="L3723"><span class="lineNum">    3723</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3724"><span class="lineNum">    3724</span>              :     _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
@@ -3792,9 +3792,9 @@
 <span id="L3730"><span class="lineNum">    3730</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3731"><span class="lineNum">    3731</span>              :     _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
 <span id="L3732"><span class="lineNum">    3732</span>              :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;</span>
-<span id="L3733"><span class="lineNum">    3733</span> <span class="tlaGNC">          62 :     operator+(basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;&amp; __lhs,</span></span>
+<span id="L3733"><span class="lineNum">    3733</span> <span class="tlaGNC">          24 :     operator+(basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;&amp; __lhs,</span></span>
 <span id="L3734"><span class="lineNum">    3734</span>              :               const _CharT* __rhs)</span>
-<span id="L3735"><span class="lineNum">    3735</span> <span class="tlaGNC">          62 :     { return std::move(__lhs.append(__rhs)); }</span></span>
+<span id="L3735"><span class="lineNum">    3735</span> <span class="tlaGNC">          24 :     { return std::move(__lhs.append(__rhs)); }</span></span>
 <span id="L3736"><span class="lineNum">    3736</span>              : </span>
 <span id="L3737"><span class="lineNum">    3737</span>              :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</span>
 <span id="L3738"><span class="lineNum">    3738</span>              :     _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR</span>
@@ -4223,9 +4223,9 @@
 <span id="L4161"><span class="lineNum">    4161</span>              : </span>
 <span id="L4162"><span class="lineNum">    4162</span>              :   // 21.4 Numeric Conversions [string.conversions].</span>
 <span id="L4163"><span class="lineNum">    4163</span>              :   inline int</span>
-<span id="L4164"><span class="lineNum">    4164</span> <span class="tlaGNC">          10 :   stoi(const string&amp; __str, size_t* __idx = 0, int __base = 10)</span></span>
-<span id="L4165"><span class="lineNum">    4165</span> <span class="tlaGNC">          10 :   { return __gnu_cxx::__stoa&lt;long, int&gt;(&amp;std::strtol, &quot;stoi&quot;, __str.c_str(),</span></span>
-<span id="L4166"><span class="lineNum">    4166</span> <span class="tlaGNC">          10 :                                         __idx, __base); }</span></span>
+<span id="L4164"><span class="lineNum">    4164</span> <span class="tlaGNC">           6 :   stoi(const string&amp; __str, size_t* __idx = 0, int __base = 10)</span></span>
+<span id="L4165"><span class="lineNum">    4165</span> <span class="tlaGNC">           6 :   { return __gnu_cxx::__stoa&lt;long, int&gt;(&amp;std::strtol, &quot;stoi&quot;, __str.c_str(),</span></span>
+<span id="L4166"><span class="lineNum">    4166</span> <span class="tlaGNC">           6 :                                         __idx, __base); }</span></span>
 <span id="L4167"><span class="lineNum">    4167</span>              : </span>
 <span id="L4168"><span class="lineNum">    4168</span>              :   inline long</span>
 <span id="L4169"><span class="lineNum">    4169</span>              :   stol(const string&amp; __str, size_t* __idx = 0, int __base = 10)</span>
@@ -4299,21 +4299,21 @@
 <span id="L4237"><span class="lineNum">    4237</span>              : </span>
 <span id="L4238"><span class="lineNum">    4238</span>              :   _GLIBCXX_NODISCARD</span>
 <span id="L4239"><span class="lineNum">    4239</span>              :   inline string</span>
-<span id="L4240"><span class="lineNum">    4240</span> <span class="tlaGNC">          52 :   to_string(int __val)</span></span>
+<span id="L4240"><span class="lineNum">    4240</span> <span class="tlaGNC">          20 :   to_string(int __val)</span></span>
 <span id="L4241"><span class="lineNum">    4241</span>              : #if _GLIBCXX_USE_CXX11_ABI &amp;&amp; (__CHAR_BIT__ * __SIZEOF_INT__) &lt;= 32</span>
 <span id="L4242"><span class="lineNum">    4242</span>              :   noexcept // any 32-bit value fits in the SSO buffer</span>
 <span id="L4243"><span class="lineNum">    4243</span>              : #endif</span>
 <span id="L4244"><span class="lineNum">    4244</span>              :   {</span>
-<span id="L4245"><span class="lineNum">    4245</span> <span class="tlaGNC">          52 :     const bool __neg = __val &lt; 0;</span></span>
-<span id="L4246"><span class="lineNum">    4246</span> <span class="tlaGNC">          52 :     const unsigned __uval = __neg ? (unsigned)~__val + 1u : __val;</span></span>
-<span id="L4247"><span class="lineNum">    4247</span> <span class="tlaGNC">          52 :     const auto __len = __detail::__to_chars_len(__uval);</span></span>
-<span id="L4248"><span class="lineNum">    4248</span> <span class="tlaGNC">          52 :     string __str;</span></span>
-<span id="L4249"><span class="lineNum">    4249</span> <span class="tlaGNC">          52 :     __str.__resize_and_overwrite(__neg + __len, [=](char* __p, size_t __n) {</span></span>
-<span id="L4250"><span class="lineNum">    4250</span> <span class="tlaGNC">          52 :       __p[0] = '-';</span></span>
-<span id="L4251"><span class="lineNum">    4251</span> <span class="tlaGNC">          52 :       __detail::__to_chars_10_impl(__p + (int)__neg, __len, __uval);</span></span>
-<span id="L4252"><span class="lineNum">    4252</span> <span class="tlaGNC">          52 :       return __n;</span></span>
+<span id="L4245"><span class="lineNum">    4245</span> <span class="tlaGNC">          20 :     const bool __neg = __val &lt; 0;</span></span>
+<span id="L4246"><span class="lineNum">    4246</span> <span class="tlaGNC">          20 :     const unsigned __uval = __neg ? (unsigned)~__val + 1u : __val;</span></span>
+<span id="L4247"><span class="lineNum">    4247</span> <span class="tlaGNC">          20 :     const auto __len = __detail::__to_chars_len(__uval);</span></span>
+<span id="L4248"><span class="lineNum">    4248</span> <span class="tlaGNC">          20 :     string __str;</span></span>
+<span id="L4249"><span class="lineNum">    4249</span> <span class="tlaGNC">          20 :     __str.__resize_and_overwrite(__neg + __len, [=](char* __p, size_t __n) {</span></span>
+<span id="L4250"><span class="lineNum">    4250</span> <span class="tlaGNC">          20 :       __p[0] = '-';</span></span>
+<span id="L4251"><span class="lineNum">    4251</span> <span class="tlaGNC">          20 :       __detail::__to_chars_10_impl(__p + (int)__neg, __len, __uval);</span></span>
+<span id="L4252"><span class="lineNum">    4252</span> <span class="tlaGNC">          20 :       return __n;</span></span>
 <span id="L4253"><span class="lineNum">    4253</span>              :     });</span>
-<span id="L4254"><span class="lineNum">    4254</span> <span class="tlaGNC">          52 :     return __str;</span></span>
+<span id="L4254"><span class="lineNum">    4254</span> <span class="tlaGNC">          20 :     return __str;</span></span>
 <span id="L4255"><span class="lineNum">    4255</span>              :   }</span>
 <span id="L4256"><span class="lineNum">    4256</span>              : </span>
 <span id="L4257"><span class="lineNum">    4257</span>              :   _GLIBCXX_NODISCARD</span>
@@ -4353,18 +4353,18 @@
 <span id="L4291"><span class="lineNum">    4291</span>              : </span>
 <span id="L4292"><span class="lineNum">    4292</span>              :   _GLIBCXX_NODISCARD</span>
 <span id="L4293"><span class="lineNum">    4293</span>              :   inline string</span>
-<span id="L4294"><span class="lineNum">    4294</span> <span class="tlaGNC">          10 :   to_string(unsigned long __val)</span></span>
+<span id="L4294"><span class="lineNum">    4294</span> <span class="tlaGNC">           4 :   to_string(unsigned long __val)</span></span>
 <span id="L4295"><span class="lineNum">    4295</span>              : #if _GLIBCXX_USE_CXX11_ABI &amp;&amp; (__CHAR_BIT__ * __SIZEOF_LONG__) &lt;= 32</span>
 <span id="L4296"><span class="lineNum">    4296</span>              :   noexcept // any 32-bit value fits in the SSO buffer</span>
 <span id="L4297"><span class="lineNum">    4297</span>              : #endif</span>
 <span id="L4298"><span class="lineNum">    4298</span>              :   {</span>
-<span id="L4299"><span class="lineNum">    4299</span> <span class="tlaGNC">          10 :     const auto __len = __detail::__to_chars_len(__val);</span></span>
-<span id="L4300"><span class="lineNum">    4300</span> <span class="tlaGNC">          10 :     string __str;</span></span>
-<span id="L4301"><span class="lineNum">    4301</span> <span class="tlaGNC">          10 :     __str.__resize_and_overwrite(__len, [__val](char* __p, size_t __n) {</span></span>
-<span id="L4302"><span class="lineNum">    4302</span> <span class="tlaGNC">          10 :       __detail::__to_chars_10_impl(__p, __n, __val);</span></span>
-<span id="L4303"><span class="lineNum">    4303</span> <span class="tlaGNC">          10 :       return __n;</span></span>
+<span id="L4299"><span class="lineNum">    4299</span> <span class="tlaGNC">           4 :     const auto __len = __detail::__to_chars_len(__val);</span></span>
+<span id="L4300"><span class="lineNum">    4300</span> <span class="tlaGNC">           4 :     string __str;</span></span>
+<span id="L4301"><span class="lineNum">    4301</span> <span class="tlaGNC">           4 :     __str.__resize_and_overwrite(__len, [__val](char* __p, size_t __n) {</span></span>
+<span id="L4302"><span class="lineNum">    4302</span> <span class="tlaGNC">           4 :       __detail::__to_chars_10_impl(__p, __n, __val);</span></span>
+<span id="L4303"><span class="lineNum">    4303</span> <span class="tlaGNC">           4 :       return __n;</span></span>
 <span id="L4304"><span class="lineNum">    4304</span>              :     });</span>
-<span id="L4305"><span class="lineNum">    4305</span> <span class="tlaGNC">          10 :     return __str;</span></span>
+<span id="L4305"><span class="lineNum">    4305</span> <span class="tlaGNC">           4 :     return __str;</span></span>
 <span id="L4306"><span class="lineNum">    4306</span> <span class="tlaUNC">           0 :   }</span></span>
 <span id="L4307"><span class="lineNum">    4307</span>              : </span>
 <span id="L4308"><span class="lineNum">    4308</span>              :   _GLIBCXX_NODISCARD</span>

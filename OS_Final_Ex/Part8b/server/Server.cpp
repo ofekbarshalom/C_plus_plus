@@ -160,19 +160,19 @@ void handleClient(int client_socket) {
         auto algorithmMAX_FLOW = AlgorithmFactory::create(5);
 
         thread mstThread([&]() {
-            algorithmMST->execute(g);
+            mstResult = algorithmMST->execute(g);
         });
 
         thread sccThread([&]() {
-            algorithmSCC->execute(g);
+            sccResult = algorithmSCC->execute(g);
         });
 
         thread cliqueThread([&]() {
-            algorithmCLIQUE->execute(g);
+            cliqueResult = algorithmCLIQUE->execute(g);
         });
 
         thread maxFlowThread([&]() {
-            algorithmMAX_FLOW->execute(g);
+            maxFlowResult = algorithmMAX_FLOW->execute(g);
         });
 
         mstThread.join();

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:42:13</td>
+            <td class="headerValue">2025-06-16 18:27:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -225,8 +225,8 @@
 <span id="L163"><span class="lineNum">     163</span>              : #else</span>
 <span id="L164"><span class="lineNum">     164</span>              :       template&lt;typename _Seq = _Sequence, typename _Requires = typename</span>
 <span id="L165"><span class="lineNum">     165</span>              :                enable_if&lt;is_default_constructible&lt;_Seq&gt;::value&gt;::type&gt;</span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          29 :         queue()</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          29 :         : c() { }</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          32 :         queue()</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          32 :         : c() { }</span></span>
 <span id="L168"><span class="lineNum">     168</span>              : </span>
 <span id="L169"><span class="lineNum">     169</span>              :       explicit</span>
 <span id="L170"><span class="lineNum">     170</span>              :       queue(const _Sequence&amp; __c)</span>
@@ -275,8 +275,8 @@
 <span id="L213"><span class="lineNum">     213</span>              :        *  Returns true if the %queue is empty.</span>
 <span id="L214"><span class="lineNum">     214</span>              :        */</span>
 <span id="L215"><span class="lineNum">     215</span>              :       _GLIBCXX_NODISCARD bool</span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         117 :       empty() const</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         117 :       { return c.empty(); }</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         103 :       empty() const</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         103 :       { return c.empty(); }</span></span>
 <span id="L218"><span class="lineNum">     218</span>              : </span>
 <span id="L219"><span class="lineNum">     219</span>              :       /**  Returns the number of elements in the %queue.  */</span>
 <span id="L220"><span class="lineNum">     220</span>              :       _GLIBCXX_NODISCARD</span>
@@ -290,10 +290,10 @@
 <span id="L228"><span class="lineNum">     228</span>              :        */</span>
 <span id="L229"><span class="lineNum">     229</span>              :       _GLIBCXX_NODISCARD</span>
 <span id="L230"><span class="lineNum">     230</span>              :       reference</span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          81 :       front()</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          77 :       front()</span></span>
 <span id="L232"><span class="lineNum">     232</span>              :       {</span>
 <span id="L233"><span class="lineNum">     233</span>              :         __glibcxx_requires_nonempty();</span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          81 :         return c.front();</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          77 :         return c.front();</span></span>
 <span id="L235"><span class="lineNum">     235</span>              :       }</span>
 <span id="L236"><span class="lineNum">     236</span>              : </span>
 <span id="L237"><span class="lineNum">     237</span>              :       /**</span>
@@ -342,8 +342,8 @@
 <span id="L280"><span class="lineNum">     280</span>              :        *  underlying sequence.</span>
 <span id="L281"><span class="lineNum">     281</span>              :        */</span>
 <span id="L282"><span class="lineNum">     282</span>              :       void</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          90 :       push(const value_type&amp; __x)</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          90 :       { c.push_back(__x); }</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          86 :       push(const value_type&amp; __x)</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          86 :       { c.push_back(__x); }</span></span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
 <span id="L286"><span class="lineNum">     286</span>              : #if __cplusplus &gt;= 201103L</span>
 <span id="L287"><span class="lineNum">     287</span>              :       void</span>
@@ -375,11 +375,11 @@
 <span id="L313"><span class="lineNum">     313</span>              :        *  called.</span>
 <span id="L314"><span class="lineNum">     314</span>              :        */</span>
 <span id="L315"><span class="lineNum">     315</span>              :       void</span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          81 :       pop()</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          77 :       pop()</span></span>
 <span id="L317"><span class="lineNum">     317</span>              :       {</span>
 <span id="L318"><span class="lineNum">     318</span>              :         __glibcxx_requires_nonempty();</span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">          81 :         c.pop_front();</span></span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">          81 :       }</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">          77 :         c.pop_front();</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">          77 :       }</span></span>
 <span id="L321"><span class="lineNum">     321</span>              : </span>
 <span id="L322"><span class="lineNum">     322</span>              : #if __cplusplus &gt;= 201103L</span>
 <span id="L323"><span class="lineNum">     323</span>              :       void</span>

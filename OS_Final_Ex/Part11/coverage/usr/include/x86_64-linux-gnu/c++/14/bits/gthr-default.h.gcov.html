@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:42:13</td>
+            <td class="headerValue">2025-06-16 18:27:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -372,9 +372,9 @@
 <span id="L310"><span class="lineNum">     310</span>              : #else /* not hppa-hpux */</span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
 <span id="L312"><span class="lineNum">     312</span>              : static inline int</span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         134 : __gthread_active_p (void)</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">          74 : __gthread_active_p (void)</span></span>
 <span id="L314"><span class="lineNum">     314</span>              : {</span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">         134 :   return 1;</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          74 :   return 1;</span></span>
 <span id="L316"><span class="lineNum">     316</span>              : }</span>
 <span id="L317"><span class="lineNum">     317</span>              : </span>
 <span id="L318"><span class="lineNum">     318</span>              : #endif /* hppa-hpux */</span>
@@ -818,10 +818,10 @@
 <span id="L756"><span class="lineNum">     756</span>              : }</span>
 <span id="L757"><span class="lineNum">     757</span>              : </span>
 <span id="L758"><span class="lineNum">     758</span>              : static inline int</span>
-<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">          67 : __gthread_mutex_lock (__gthread_mutex_t *__mutex)</span></span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">          37 : __gthread_mutex_lock (__gthread_mutex_t *__mutex)</span></span>
 <span id="L760"><span class="lineNum">     760</span>              : {</span>
-<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">          67 :   if (__gthread_active_p ())</span></span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          67 :     return __gthrw_(pthread_mutex_lock) (__mutex);</span></span>
+<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">          37 :   if (__gthread_active_p ())</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          37 :     return __gthrw_(pthread_mutex_lock) (__mutex);</span></span>
 <span id="L763"><span class="lineNum">     763</span>              :   else</span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC">           0 :     return 0;</span></span>
 <span id="L765"><span class="lineNum">     765</span>              : }</span>
@@ -848,10 +848,10 @@
 <span id="L786"><span class="lineNum">     786</span>              : #endif</span>
 <span id="L787"><span class="lineNum">     787</span>              : </span>
 <span id="L788"><span class="lineNum">     788</span>              : static inline int</span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          67 : __gthread_mutex_unlock (__gthread_mutex_t *__mutex)</span></span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          37 : __gthread_mutex_unlock (__gthread_mutex_t *__mutex)</span></span>
 <span id="L790"><span class="lineNum">     790</span>              : {</span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          67 :   if (__gthread_active_p ())</span></span>
-<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">          67 :     return __gthrw_(pthread_mutex_unlock) (__mutex);</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          37 :   if (__gthread_active_p ())</span></span>
+<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">          37 :     return __gthrw_(pthread_mutex_unlock) (__mutex);</span></span>
 <span id="L793"><span class="lineNum">     793</span>              :   else</span>
 <span id="L794"><span class="lineNum">     794</span> <span class="tlaUNC">           0 :     return 0;</span></span>
 <span id="L795"><span class="lineNum">     795</span>              : }</span>

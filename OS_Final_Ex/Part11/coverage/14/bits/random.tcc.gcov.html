@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:42:13</td>
+            <td class="headerValue">2025-06-16 18:27:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -385,24 +385,24 @@
 <span id="L323"><span class="lineNum">     323</span>              :            _UIntType __b, size_t __t, _UIntType __c, size_t __l,</span>
 <span id="L324"><span class="lineNum">     324</span>              :            _UIntType __f&gt;</span>
 <span id="L325"><span class="lineNum">     325</span>              :     void</span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           3 :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           1 :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span></span>
 <span id="L327"><span class="lineNum">     327</span>              :                             __s, __b, __t, __c, __l, __f&gt;::</span>
 <span id="L328"><span class="lineNum">     328</span>              :     seed(result_type __sd)</span>
 <span id="L329"><span class="lineNum">     329</span>              :     {</span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           3 :       _M_x[0] = __detail::__mod&lt;_UIntType,</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">           3 :         __detail::_Shift&lt;_UIntType, __w&gt;::__value&gt;(__sd);</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           1 :       _M_x[0] = __detail::__mod&lt;_UIntType,</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">           1 :         __detail::_Shift&lt;_UIntType, __w&gt;::__value&gt;(__sd);</span></span>
 <span id="L332"><span class="lineNum">     332</span>              : </span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        1872 :       for (size_t __i = 1; __i &lt; state_size; ++__i)</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">         624 :       for (size_t __i = 1; __i &lt; state_size; ++__i)</span></span>
 <span id="L334"><span class="lineNum">     334</span>              :         {</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">        1869 :           _UIntType __x = _M_x[__i - 1];</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">        1869 :           __x ^= __x &gt;&gt; (__w - 2);</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">        1869 :           __x *= __f;</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">        1869 :           __x += __detail::__mod&lt;_UIntType, __n&gt;(__i);</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1869 :           _M_x[__i] = __detail::__mod&lt;_UIntType,</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">        1869 :             __detail::_Shift&lt;_UIntType, __w&gt;::__value&gt;(__x);</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         623 :           _UIntType __x = _M_x[__i - 1];</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         623 :           __x ^= __x &gt;&gt; (__w - 2);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         623 :           __x *= __f;</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         623 :           __x += __detail::__mod&lt;_UIntType, __n&gt;(__i);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         623 :           _M_x[__i] = __detail::__mod&lt;_UIntType,</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         623 :             __detail::_Shift&lt;_UIntType, __w&gt;::__value&gt;(__x);</span></span>
 <span id="L341"><span class="lineNum">     341</span>              :         }</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           3 :       _M_p = state_size;</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           3 :     }</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           1 :       _M_p = state_size;</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           1 :     }</span></span>
 <span id="L344"><span class="lineNum">     344</span>              : </span>
 <span id="L345"><span class="lineNum">     345</span>              :   template&lt;typename _UIntType,</span>
 <span id="L346"><span class="lineNum">     346</span>              :            size_t __w, size_t __n, size_t __m, size_t __r,</span>
@@ -456,35 +456,35 @@
 <span id="L394"><span class="lineNum">     394</span>              :            _UIntType __b, size_t __t, _UIntType __c, size_t __l,</span>
 <span id="L395"><span class="lineNum">     395</span>              :            _UIntType __f&gt;</span>
 <span id="L396"><span class="lineNum">     396</span>              :     void</span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">           3 :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">           1 :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span></span>
 <span id="L398"><span class="lineNum">     398</span>              :                             __s, __b, __t, __c, __l, __f&gt;::</span>
 <span id="L399"><span class="lineNum">     399</span>              :     _M_gen_rand(void)</span>
 <span id="L400"><span class="lineNum">     400</span>              :     {</span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">           3 :       const _UIntType __upper_mask = (~_UIntType()) &lt;&lt; __r;</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">           3 :       const _UIntType __lower_mask = ~__upper_mask;</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">           1 :       const _UIntType __upper_mask = (~_UIntType()) &lt;&lt; __r;</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">           1 :       const _UIntType __lower_mask = ~__upper_mask;</span></span>
 <span id="L403"><span class="lineNum">     403</span>              : </span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">         684 :       for (size_t __k = 0; __k &lt; (__n - __m); ++__k)</span></span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">         228 :       for (size_t __k = 0; __k &lt; (__n - __m); ++__k)</span></span>
 <span id="L405"><span class="lineNum">     405</span>              :         {</span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">         681 :           _UIntType __y = ((_M_x[__k] &amp; __upper_mask)</span></span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">         681 :                            | (_M_x[__k + 1] &amp; __lower_mask));</span></span>
-<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">        1362 :           _M_x[__k] = (_M_x[__k + __m] ^ (__y &gt;&gt; 1)</span></span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">         681 :                        ^ ((__y &amp; 0x01) ? __a : 0));</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">         227 :           _UIntType __y = ((_M_x[__k] &amp; __upper_mask)</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">         227 :                            | (_M_x[__k + 1] &amp; __lower_mask));</span></span>
+<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">         454 :           _M_x[__k] = (_M_x[__k + __m] ^ (__y &gt;&gt; 1)</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">         227 :                        ^ ((__y &amp; 0x01) ? __a : 0));</span></span>
 <span id="L410"><span class="lineNum">     410</span>              :         }</span>
 <span id="L411"><span class="lineNum">     411</span>              : </span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        1191 :       for (size_t __k = (__n - __m); __k &lt; (__n - 1); ++__k)</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">         397 :       for (size_t __k = (__n - __m); __k &lt; (__n - 1); ++__k)</span></span>
 <span id="L413"><span class="lineNum">     413</span>              :         {</span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">        1188 :           _UIntType __y = ((_M_x[__k] &amp; __upper_mask)</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        1188 :                            | (_M_x[__k + 1] &amp; __lower_mask));</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">        2376 :           _M_x[__k] = (_M_x[__k + (__m - __n)] ^ (__y &gt;&gt; 1)</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">        1188 :                        ^ ((__y &amp; 0x01) ? __a : 0));</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">         396 :           _UIntType __y = ((_M_x[__k] &amp; __upper_mask)</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">         396 :                            | (_M_x[__k + 1] &amp; __lower_mask));</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">         792 :           _M_x[__k] = (_M_x[__k + (__m - __n)] ^ (__y &gt;&gt; 1)</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">         396 :                        ^ ((__y &amp; 0x01) ? __a : 0));</span></span>
 <span id="L418"><span class="lineNum">     418</span>              :         }</span>
 <span id="L419"><span class="lineNum">     419</span>              : </span>
-<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">           3 :       _UIntType __y = ((_M_x[__n - 1] &amp; __upper_mask)</span></span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">           3 :                        | (_M_x[0] &amp; __lower_mask));</span></span>
-<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">           6 :       _M_x[__n - 1] = (_M_x[__m - 1] ^ (__y &gt;&gt; 1)</span></span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">           3 :                        ^ ((__y &amp; 0x01) ? __a : 0));</span></span>
-<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">           3 :       _M_p = 0;</span></span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">           3 :     }</span></span>
+<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">           1 :       _UIntType __y = ((_M_x[__n - 1] &amp; __upper_mask)</span></span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">           1 :                        | (_M_x[0] &amp; __lower_mask));</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">           2 :       _M_x[__n - 1] = (_M_x[__m - 1] ^ (__y &gt;&gt; 1)</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">           1 :                        ^ ((__y &amp; 0x01) ? __a : 0));</span></span>
+<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">           1 :       _M_p = 0;</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">           1 :     }</span></span>
 <span id="L426"><span class="lineNum">     426</span>              : </span>
 <span id="L427"><span class="lineNum">     427</span>              :   template&lt;typename _UIntType, size_t __w,</span>
 <span id="L428"><span class="lineNum">     428</span>              :            size_t __n, size_t __m, size_t __r,</span>
@@ -512,22 +512,22 @@
 <span id="L450"><span class="lineNum">     450</span>              :     typename</span>
 <span id="L451"><span class="lineNum">     451</span>              :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span>
 <span id="L452"><span class="lineNum">     452</span>              :                             __s, __b, __t, __c, __l, __f&gt;::result_type</span>
-<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">          72 :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span></span>
+<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">          18 :     mersenne_twister_engine&lt;_UIntType, __w, __n, __m, __r, __a, __u, __d,</span></span>
 <span id="L454"><span class="lineNum">     454</span>              :                             __s, __b, __t, __c, __l, __f&gt;::</span>
 <span id="L455"><span class="lineNum">     455</span>              :     operator()()</span>
 <span id="L456"><span class="lineNum">     456</span>              :     {</span>
 <span id="L457"><span class="lineNum">     457</span>              :       // Reload the vector - cost is O(n) amortized over n calls.</span>
-<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">          72 :       if (_M_p &gt;= state_size)</span></span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           3 :         _M_gen_rand();</span></span>
+<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">          18 :       if (_M_p &gt;= state_size)</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           1 :         _M_gen_rand();</span></span>
 <span id="L460"><span class="lineNum">     460</span>              : </span>
 <span id="L461"><span class="lineNum">     461</span>              :       // Calculate o(x(i)).</span>
-<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">          72 :       result_type __z = _M_x[_M_p++];</span></span>
-<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">          72 :       __z ^= (__z &gt;&gt; __u) &amp; __d;</span></span>
-<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">          72 :       __z ^= (__z &lt;&lt; __s) &amp; __b;</span></span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          72 :       __z ^= (__z &lt;&lt; __t) &amp; __c;</span></span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          72 :       __z ^= (__z &gt;&gt; __l);</span></span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">          18 :       result_type __z = _M_x[_M_p++];</span></span>
+<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">          18 :       __z ^= (__z &gt;&gt; __u) &amp; __d;</span></span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">          18 :       __z ^= (__z &lt;&lt; __s) &amp; __b;</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          18 :       __z ^= (__z &lt;&lt; __t) &amp; __c;</span></span>
+<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          18 :       __z ^= (__z &gt;&gt; __l);</span></span>
 <span id="L467"><span class="lineNum">     467</span>              : </span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          72 :       return __z;</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          18 :       return __z;</span></span>
 <span id="L469"><span class="lineNum">     469</span>              :     }</span>
 <span id="L470"><span class="lineNum">     470</span>              : </span>
 <span id="L471"><span class="lineNum">     471</span>              :   template&lt;typename _UIntType, size_t __w,</span>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:42:13</td>
+            <td class="headerValue">2025-06-16 18:27:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -163,20 +163,20 @@
 <span id="L101"><span class="lineNum">     101</span>              :         param_type() : param_type(0) { }</span>
 <span id="L102"><span class="lineNum">     102</span>              : </span>
 <span id="L103"><span class="lineNum">     103</span>              :         explicit</span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">           3 :         param_type(_IntType __a,</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">           1 :         param_type(_IntType __a,</span></span>
 <span id="L105"><span class="lineNum">     105</span>              :                    _IntType __b = __gnu_cxx::__int_traits&lt;_IntType&gt;::__max)</span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">           3 :         : _M_a(__a), _M_b(__b)</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">           1 :         : _M_a(__a), _M_b(__b)</span></span>
 <span id="L107"><span class="lineNum">     107</span>              :         {</span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">           3 :           __glibcxx_assert(_M_a &lt;= _M_b);</span></span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">           3 :         }</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">           1 :           __glibcxx_assert(_M_a &lt;= _M_b);</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">           1 :         }</span></span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
 <span id="L111"><span class="lineNum">     111</span>              :         result_type</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         144 :         a() const</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         144 :         { return _M_a; }</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">          36 :         a() const</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">          36 :         { return _M_a; }</span></span>
 <span id="L114"><span class="lineNum">     114</span>              : </span>
 <span id="L115"><span class="lineNum">     115</span>              :         result_type</span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">          72 :         b() const</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">          72 :         { return _M_b; }</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">          18 :         b() const</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">          18 :         { return _M_b; }</span></span>
 <span id="L118"><span class="lineNum">     118</span>              : </span>
 <span id="L119"><span class="lineNum">     119</span>              :         friend bool</span>
 <span id="L120"><span class="lineNum">     120</span>              :         operator==(const param_type&amp; __p1, const param_type&amp; __p2)</span>
@@ -201,11 +201,11 @@
 <span id="L139"><span class="lineNum">     139</span>              :        * @brief Constructs a uniform distribution object.</span>
 <span id="L140"><span class="lineNum">     140</span>              :        */</span>
 <span id="L141"><span class="lineNum">     141</span>              :       explicit</span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           3 :       uniform_int_distribution(_IntType __a,</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           1 :       uniform_int_distribution(_IntType __a,</span></span>
 <span id="L143"><span class="lineNum">     143</span>              :                                _IntType __b</span>
 <span id="L144"><span class="lineNum">     144</span>              :                                  = __gnu_cxx::__int_traits&lt;_IntType&gt;::__max)</span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           3 :       : _M_param(__a, __b)</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           3 :       { }</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :       : _M_param(__a, __b)</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :       { }</span></span>
 <span id="L147"><span class="lineNum">     147</span>              : </span>
 <span id="L148"><span class="lineNum">     148</span>              :       explicit</span>
 <span id="L149"><span class="lineNum">     149</span>              :       uniform_int_distribution(const param_type&amp; __p)</span>
@@ -262,8 +262,8 @@
 <span id="L200"><span class="lineNum">     200</span>              :        */</span>
 <span id="L201"><span class="lineNum">     201</span>              :       template&lt;typename _UniformRandomBitGenerator&gt;</span>
 <span id="L202"><span class="lineNum">     202</span>              :         result_type</span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          72 :         operator()(_UniformRandomBitGenerator&amp; __urng)</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">          72 :         { return this-&gt;operator()(__urng, _M_param); }</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          18 :         operator()(_UniformRandomBitGenerator&amp; __urng)</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">          18 :         { return this-&gt;operator()(__urng, _M_param); }</span></span>
 <span id="L205"><span class="lineNum">     205</span>              : </span>
 <span id="L206"><span class="lineNum">     206</span>              :       template&lt;typename _UniformRandomBitGenerator&gt;</span>
 <span id="L207"><span class="lineNum">     207</span>              :         result_type</span>
@@ -316,7 +316,7 @@
 <span id="L254"><span class="lineNum">     254</span>              :       // using an unsigned type _Wp twice as wide as unsigned type _Up.</span>
 <span id="L255"><span class="lineNum">     255</span>              :       template&lt;typename _Wp, typename _Urbg, typename _Up&gt;</span>
 <span id="L256"><span class="lineNum">     256</span>              :         static _Up</span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          72 :         _S_nd(_Urbg&amp; __g, _Up __range)</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          18 :         _S_nd(_Urbg&amp; __g, _Up __range)</span></span>
 <span id="L258"><span class="lineNum">     258</span>              :         {</span>
 <span id="L259"><span class="lineNum">     259</span>              :           using _Up_traits = __gnu_cxx::__int_traits&lt;_Up&gt;;</span>
 <span id="L260"><span class="lineNum">     260</span>              :           using _Wp_traits = __gnu_cxx::__int_traits&lt;_Wp&gt;;</span>
@@ -328,9 +328,9 @@
 <span id="L266"><span class="lineNum">     266</span>              :           // reference: Fast Random Integer Generation in an Interval</span>
 <span id="L267"><span class="lineNum">     267</span>              :           // ACM Transactions on Modeling and Computer Simulation 29 (1), 2019</span>
 <span id="L268"><span class="lineNum">     268</span>              :           // https://arxiv.org/abs/1805.10941</span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">          72 :           _Wp __product = _Wp(__g()) * _Wp(__range);</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">          72 :           _Up __low = _Up(__product);</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          72 :           if (__low &lt; __range)</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">          18 :           _Wp __product = _Wp(__g()) * _Wp(__range);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">          18 :           _Up __low = _Up(__product);</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          18 :           if (__low &lt; __range)</span></span>
 <span id="L272"><span class="lineNum">     272</span>              :             {</span>
 <span id="L273"><span class="lineNum">     273</span> <span class="tlaUNC">           0 :               _Up __threshold = -__range % __range;</span></span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :               while (__low &lt; __threshold)</span></span>
@@ -339,14 +339,14 @@
 <span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :                   __low = _Up(__product);</span></span>
 <span id="L278"><span class="lineNum">     278</span>              :                 }</span>
 <span id="L279"><span class="lineNum">     279</span>              :             }</span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          72 :           return __product &gt;&gt; _Up_traits::__digits;</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          18 :           return __product &gt;&gt; _Up_traits::__digits;</span></span>
 <span id="L281"><span class="lineNum">     281</span>              :         }</span>
 <span id="L282"><span class="lineNum">     282</span>              :     };</span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
 <span id="L284"><span class="lineNum">     284</span>              :   template&lt;typename _IntType&gt;</span>
 <span id="L285"><span class="lineNum">     285</span>              :     template&lt;typename _UniformRandomBitGenerator&gt;</span>
 <span id="L286"><span class="lineNum">     286</span>              :       typename uniform_int_distribution&lt;_IntType&gt;::result_type</span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          72 :       uniform_int_distribution&lt;_IntType&gt;::</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          18 :       uniform_int_distribution&lt;_IntType&gt;::</span></span>
 <span id="L288"><span class="lineNum">     288</span>              :       operator()(_UniformRandomBitGenerator&amp; __urng,</span>
 <span id="L289"><span class="lineNum">     289</span>              :                  const param_type&amp; __param)</span>
 <span id="L290"><span class="lineNum">     290</span>              :       {</span>
@@ -354,21 +354,21 @@
 <span id="L292"><span class="lineNum">     292</span>              :         typedef typename make_unsigned&lt;result_type&gt;::type __utype;</span>
 <span id="L293"><span class="lineNum">     293</span>              :         typedef typename common_type&lt;_Gresult_type, __utype&gt;::type __uctype;</span>
 <span id="L294"><span class="lineNum">     294</span>              : </span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          72 :         constexpr __uctype __urngmin = _UniformRandomBitGenerator::min();</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          72 :         constexpr __uctype __urngmax = _UniformRandomBitGenerator::max();</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          18 :         constexpr __uctype __urngmin = _UniformRandomBitGenerator::min();</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          18 :         constexpr __uctype __urngmax = _UniformRandomBitGenerator::max();</span></span>
 <span id="L297"><span class="lineNum">     297</span>              :         static_assert( __urngmin &lt; __urngmax,</span>
 <span id="L298"><span class="lineNum">     298</span>              :             &quot;Uniform random bit generator must define min() &lt; max()&quot;);</span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          72 :         constexpr __uctype __urngrange = __urngmax - __urngmin;</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          18 :         constexpr __uctype __urngrange = __urngmax - __urngmin;</span></span>
 <span id="L300"><span class="lineNum">     300</span>              : </span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          72 :         const __uctype __urange</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          72 :           = __uctype(__param.b()) - __uctype(__param.a());</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          18 :         const __uctype __urange</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          18 :           = __uctype(__param.b()) - __uctype(__param.a());</span></span>
 <span id="L303"><span class="lineNum">     303</span>              : </span>
 <span id="L304"><span class="lineNum">     304</span>              :         __uctype __ret;</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          72 :         if (__urngrange &gt; __urange)</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          18 :         if (__urngrange &gt; __urange)</span></span>
 <span id="L306"><span class="lineNum">     306</span>              :           {</span>
 <span id="L307"><span class="lineNum">     307</span>              :             // downscaling</span>
 <span id="L308"><span class="lineNum">     308</span>              : </span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          72 :             const __uctype __uerange = __urange + 1; // __urange can be zero</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          18 :             const __uctype __uerange = __urange + 1; // __urange can be zero</span></span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
 <span id="L311"><span class="lineNum">     311</span>              : #if defined __UINT64_TYPE__ &amp;&amp; defined __UINT32_TYPE__</span>
 <span id="L312"><span class="lineNum">     312</span>              : #if __SIZEOF_INT128__</span>
@@ -386,8 +386,8 @@
 <span id="L324"><span class="lineNum">     324</span>              :               {</span>
 <span id="L325"><span class="lineNum">     325</span>              :                 // __urng produces values that use exactly 32-bits,</span>
 <span id="L326"><span class="lineNum">     326</span>              :                 // so use 64-bit integers to downscale to desired range.</span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          72 :                 __UINT32_TYPE__ __u32erange = __uerange;</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          72 :                 __ret = _S_nd&lt;__UINT64_TYPE__&gt;(__urng, __u32erange);</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          18 :                 __UINT32_TYPE__ __u32erange = __uerange;</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          18 :                 __ret = _S_nd&lt;__UINT64_TYPE__&gt;(__urng, __u32erange);</span></span>
 <span id="L329"><span class="lineNum">     329</span>              :               }</span>
 <span id="L330"><span class="lineNum">     330</span>              :             else</span>
 <span id="L331"><span class="lineNum">     331</span>              : #endif</span>
@@ -431,7 +431,7 @@
 <span id="L369"><span class="lineNum">     369</span>              :         else</span>
 <span id="L370"><span class="lineNum">     370</span> <span class="tlaUNC">           0 :           __ret = __uctype(__urng()) - __urngmin;</span></span>
 <span id="L371"><span class="lineNum">     371</span>              : </span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          72 :         return __ret + __param.a();</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          18 :         return __ret + __param.a();</span></span>
 <span id="L373"><span class="lineNum">     373</span>              :       }</span>
 <span id="L374"><span class="lineNum">     374</span>              : </span>
 <span id="L375"><span class="lineNum">     375</span>              : </span>

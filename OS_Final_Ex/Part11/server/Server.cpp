@@ -14,6 +14,7 @@
 #include "PipelineData.hpp"
 #include "../core/GraphAlgorithms.hpp"
 #include "../core/Graph.hpp"
+#include "../algorithms/AlgorithmFactory.hpp"
 
 using namespace std;
 using namespace GraphAlgo;
@@ -112,8 +113,8 @@ void mstWorker() {
         PipelineData data = queueMST.pop();
         if (!running || data.client_socket == -1) break;
 
-        int weight = findMSTWeight(data.graph);
-        data.mstResult = "MST Weight: " + to_string(weight) + "\n";
+        auto algorithm = AlgorithmFactory::create(2);
+        data.mstResult = algorithm->execute(data.graph);
         queueSCC.push(data);
     }
 }
@@ -123,13 +124,8 @@ void sccWorker() {
         PipelineData data = queueSCC.pop();
         if (!running || data.client_socket == -1) break;
 
-        auto scc = findSCC(data.graph);
-        data.sccResult = "SCC Components (" + to_string(scc.size()) + "):\n";
-        for (const auto& comp : scc) {
-            data.sccResult += "{ ";
-            for (int v : comp) data.sccResult += to_string(v) + " ";
-            data.sccResult += "}\n";
-        }
+        auto algorithm = AlgorithmFactory::create(3);
+        data.sccResult = algorithm->execute(data.graph);
         queueClique.push(data);
     }
 }
@@ -139,10 +135,8 @@ void cliqueWorker() {
         PipelineData data = queueClique.pop();
         if (!running || data.client_socket == -1) break;
 
-        auto clique = findMaxClique(data.graph);
-        data.cliqueResult = "Max Clique (" + to_string(clique.size()) + "): ";
-        for (int v : clique) data.cliqueResult += to_string(v) + " ";
-        data.cliqueResult += "\n";
+        auto algorithm = AlgorithmFactory::create(4);
+        data.cliqueResult = algorithm->execute(data.graph);
         queueMaxFlow.push(data);
     }
 }
@@ -152,8 +146,8 @@ void maxFlowWorker() {
         PipelineData data = queueMaxFlow.pop();
         if (!running || data.client_socket == -1) break;
 
-        int flow = findMaxFlow(data.graph);
-        data.maxFlowResult = "Max Flow: " + to_string(flow) + "\n";
+        auto algorithm = AlgorithmFactory::create(5);
+        data.maxFlowResult = algorithm->execute(data.graph);
 
         string fullResponse = data.mstResult + data.sccResult + data.cliqueResult + data.maxFlowResult;
         send(data.client_socket, fullResponse.c_str(), fullResponse.size(), 0);

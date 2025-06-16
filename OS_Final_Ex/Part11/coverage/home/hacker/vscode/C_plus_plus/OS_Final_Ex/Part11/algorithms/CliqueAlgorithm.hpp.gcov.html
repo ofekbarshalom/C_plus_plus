@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">7</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 17:42:13</td>
+            <td class="headerValue">2025-06-16 18:27:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
           </tr>
                   <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -71,13 +71,13 @@
 <span id="L9"><span class="lineNum">       9</span>              : </span>
 <span id="L10"><span class="lineNum">      10</span>              : class CliqueAlgorithm : public AlgorithmStrategy {</span>
 <span id="L11"><span class="lineNum">      11</span>              : public:</span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaUNC">           0 :     string execute(const Graph&amp; graph) override {</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC">           0 :         vector&lt;int&gt; clique = findMaxClique(graph);</span></span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :         string res = &quot;Max Clique (&quot; + to_string(clique.size()) + &quot;): &quot;;</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :         for (int v : clique)</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :             res += to_string(v) + &quot; &quot;;</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :         return res + &quot;\n&quot;;</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           2 :     string execute(const Graph&amp; graph) override {</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           2 :         vector&lt;int&gt; clique = findMaxClique(graph);</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           2 :         string res = &quot;Max Clique (&quot; + to_string(clique.size()) + &quot;): &quot;;</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           8 :         for (int v : clique)</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           6 :             res += to_string(v) + &quot; &quot;;</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           4 :         return res + &quot;\n&quot;;</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           2 :     }</span></span>
 <span id="L19"><span class="lineNum">      19</span>              : };</span>
         </pre>
               </td>
