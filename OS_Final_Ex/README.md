@@ -61,9 +61,9 @@ nc localhost 8080
 
 ```
 Choose input mode:
-1 - Enter graph manually
-2 - Generate random graph
-0 - Exit
+0 - Exit server
+1 - Generate random graph
+2 - Enter graph manually
 2
 Enter: vertices edges seed directed(0=dir,1=undir):
 6 7 42 1
