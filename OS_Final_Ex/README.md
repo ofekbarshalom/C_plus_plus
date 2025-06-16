@@ -64,7 +64,7 @@ Choose input mode:
 0 - Exit server
 1 - Generate random graph
 2 - Enter graph manually
-2
+1
 Enter: vertices edges seed directed(0=dir,1=undir):
 6 7 42 1
 ```
