@@ -83,11 +83,26 @@ Max Flow: 9
 
 ## File Structure
 
-- `Server.cpp`: Main server loop and client handler logic.
-- `Graph.cpp/.hpp`: Graph representation and adjacency list structure.
-- `GraphAlgorithms.cpp/.hpp`: Contains implementations for MST, SCC, Clique, MaxFlow, Eulerian path.
-- `AlgorithmFactory.*`: Factory pattern to select the correct algorithm.
-- `main.cpp`: Optional standalone program to test graph generation and Eulerian circuit detection.
+├── algorithms/
+│   ├── AlgorithmFactory.cpp / .hpp      # Factory pattern to instantiate algorithms
+│   ├── AlgorithmStrategy.hpp            # Base strategy interface
+│   ├── CliqueAlgorithm.hpp              # Max clique strategy
+│   ├── EulerianAlgorithm.hpp            # Euler circuit strategy
+│   ├── MaxFlowAlgorithm.hpp             # Max flow strategy
+│   ├── MSTAlgorithm.hpp                 # MST weight strategy
+│   └── SCCAlgorithm.hpp                 # SCC strategy
+│
+├── core/
+│   ├── Graph.cpp / .hpp                 # Graph structure using adjacency list
+│   └── GraphAlgorithms.cpp / .hpp       # Central algorithm implementations
+│
+├── server/
+│   ├── BlockingQueue.hpp                # Thread-safe queue for pipeline
+│   ├── PipelineData.hpp                 # Struct passed between pipeline stages
+│   └── Server.cpp                       # TCP server handling client requests
+│
+├── main.cpp                             # CLI tool to generate and test graphs
+├── makefile 
 
 ## Dependencies
 
