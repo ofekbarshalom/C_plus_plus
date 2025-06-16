@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core/Graph.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core">/home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core</a> - Graph.cpp<span style="font-size: 80%;"> (source / <a href="Graph.cpp.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">72.0&nbsp;%</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">18</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-06-16 18:35:39</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">6</td>
+          </tr>
+                  <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : #include &quot;Graph.hpp&quot;</span>
+<span id="L2"><span class="lineNum">       2</span>              : </span>
+<span id="L3"><span class="lineNum">       3</span>              : using namespace std;</span>
+<span id="L4"><span class="lineNum">       4</span>              : </span>
+<span id="L5"><span class="lineNum">       5</span>              : namespace GraphAlgo {</span>
+<span id="L6"><span class="lineNum">       6</span>              : </span>
+<span id="L7"><span class="lineNum">       7</span>              : // Constructor</span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">         222 : Graph::Graph(int vertices, bool isDirected): numVertices(vertices), directed(isDirected), adjList(vertices) {}</span></span>
+<span id="L9"><span class="lineNum">       9</span>              : </span>
+<span id="L10"><span class="lineNum">      10</span>              : // Copy Constructor</span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">         224 : Graph::Graph(const Graph&amp; other)</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">         224 :     : numVertices(other.numVertices), directed(other.directed), adjList(other.adjList) {}</span></span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              : // Copy Assignment Operator</span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">          17 : Graph&amp; Graph::operator=(const Graph&amp; other) {</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          17 :     if (this != &amp;other) {</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">          17 :         numVertices = other.numVertices;</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          17 :         directed = other.directed;</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          17 :         adjList = other.adjList;</span></span>
+<span id="L20"><span class="lineNum">      20</span>              :     }</span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          17 :     return *this;</span></span>
+<span id="L22"><span class="lineNum">      22</span>              : }</span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span>              : //=============== Methods ===============</span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         273 : void Graph::addEdge(int src, int dst, int weight) {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">         273 :     adjList[src].emplace_back(src, dst, weight);</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         273 :     if (!directed) {</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">          14 :         adjList[dst].emplace_back(dst, src, weight);</span></span>
+<span id="L29"><span class="lineNum">      29</span>              :     }</span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         273 : }</span></span>
+<span id="L31"><span class="lineNum">      31</span>              : </span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 : void Graph::printGraph() const {</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :     for (int i = 0; i &lt; numVertices; ++i) {</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :         cout &lt;&lt; &quot;Vertex &quot; &lt;&lt; i &lt;&lt; &quot;: &quot;;</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :         for (const Edge&amp; e : adjList[i]) {</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :             cout &lt;&lt; &quot;(&quot; &lt;&lt; e.dst &lt;&lt; &quot;, w=&quot; &lt;&lt; e.weight &lt;&lt; &quot;) &quot;;</span></span>
+<span id="L37"><span class="lineNum">      37</span>              :         }</span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         cout &lt;&lt; '\n';</span></span>
+<span id="L39"><span class="lineNum">      39</span>              :     }</span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 : }</span></span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         102 : int Graph::getVertexCount() const {</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         102 :     return numVertices;</span></span>
+<span id="L44"><span class="lineNum">      44</span>              : }</span>
+<span id="L45"><span class="lineNum">      45</span>              : </span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         582 : const vector&lt;Edge&gt;&amp; Graph::getNeighbors(int v) const {</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         582 :     return adjList[v];</span></span>
+<span id="L48"><span class="lineNum">      48</span>              : }</span>
+<span id="L49"><span class="lineNum">      49</span>              : </span>
+<span id="L50"><span class="lineNum">      50</span>              : } // namespace GraphAlgo</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

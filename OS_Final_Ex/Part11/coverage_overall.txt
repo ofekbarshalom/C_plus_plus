@@ -1,0 +1,169 @@
+┌──(hacker㉿kali)-[~/vscode/C_plus_plus/OS_Final_Ex/Part11]
+└─$ make coverage
+lcov --capture --directory core --directory algorithms --directory server --output-file coverage.info
+Capturing coverage data from core algorithms server
+geninfo cmd: '/usr/bin/geninfo core algorithms server --toolname lcov --output-filename coverage.info'
+Found gcov version: 14.2.0
+Using intermediate gcov format
+Recording 'internal' directories:
+        /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core
+        core
+        /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms
+        algorithms
+        /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/server
+        server
+Writing temporary data to /tmp/geninfo_datw3dG
+Scanning core for .gcda files ...
+Found 2 data files in core
+Scanning algorithms for .gcda files ...
+Found 1 data files in algorithms
+Scanning server for .gcda files ...
+Found 1 data files in server
+using: chunkSize: 1, nchunks:4, intervalLength:0
+lcov: WARNING: (inconsistent) /usr/include/c++/14/bits/alloc_traits.h:993: unexecuted block on non-branch line with non-zero hit count.  Use "geninfo --rc geninfo_unexecuted_blocks=1 to set count to zero.
+        (use "lcov --ignore-errors inconsistent,inconsistent ..." to suppress this warning)
+Finished processing 4 GCDA files
+Apply filtering..
+Finished filter file processing
+Finished .info-file creation
+Summary coverage rate:
+  source files: 61
+  lines.......: 79.6% (1711 of 2149 lines)
+  functions...: 80.7% (994 of 1231 functions)
+Message summary:
+  1 warning message:
+    inconsistent: 1
+genhtml coverage.info --output-directory coverage
+Reading tracefile coverage.info.
+Found 61 entries.
+Found common filename prefix "/usr/include/c++"
+Generating output.
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms/AlgorithmStrategy.hpp
+  lines=1 hit=1 functions=2 hit=1
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms/AlgorithmFactory.cpp
+  lines=7 hit=6 functions=1 hit=1
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms/MSTAlgorithm.hpp
+  lines=3 hit=3 functions=1 hit=1
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms/CliqueAlgorithm.hpp
+  lines=7 hit=7 functions=1 hit=1
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms/SCCAlgorithm.hpp
+  lines=10 hit=10 functions=1 hit=1
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/algorithms/MaxFlowAlgorithm.hpp
+  lines=3 hit=3 functions=1 hit=1
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core/Graph.hpp
+  lines=2 hit=2 functions=2 hit=2
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core/Graph.cpp
+  lines=25 hit=18 functions=7 hit=6
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/server/BlockingQueue.hpp
+  lines=12 hit=12 functions=3 hit=3
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/core/GraphAlgorithms.cpp
+  lines=153 hit=151 functions=13 hit=13
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/server/Server.cpp
+  lines=184 hit=163 functions=10 hit=10
+Processing file /home/hacker/vscode/C_plus_plus/OS_Final_Ex/Part11/server/PipelineData.hpp
+  lines=1 hit=1 functions=1 hit=1
+Processing file 14/bit
+  lines=12 hit=11 functions=2 hit=2
+Processing file 14/atomic
+  lines=4 hit=4 functions=2 hit=2
+Processing file 14/bits/allocator.h
+  lines=5 hit=4
+Processing file 14/bits/alloc_traits.h
+  lines=10 hit=9
+Processing file 14/bits/basic_string.h
+  lines=46 hit=42 functions=12 hit=12
+Processing file 14/bits/atomic_base.h
+  lines=15 hit=15 functions=2 hit=2
+Processing file 14/bits/char_traits.h
+  lines=15 hit=3 functions=4 hit=1
+Processing file 14/bits/basic_string.tcc
+  lines=22 hit=21 functions=10 hit=7
+Processing file 14/bits/cpp_type_traits.h
+  lines=2 hit=2 functions=12 hit=2
+Processing file 14/bits/charconv.h
+  lines=26 hit=13 functions=4 hit=4
+Processing file 14/bits/invoke.h
+  lines=5 hit=5 functions=4 hit=4
+Processing file 14/bits/deque.tcc
+  lines=64 hit=21 functions=8 hit=3
+Processing file 14/bits/new_allocator.h
+  lines=15 hit=12 functions=38 hit=38
+Processing file 14/bits/move.h
+  lines=11 hit=6 functions=64 hit=51
+Processing file 14/bits/ptr_traits.h
+  lines=2 hit=2 functions=4 hit=4
+Processing file 14/bits/predefined_ops.h
+  lines=11 hit=8 functions=6 hit=4
+Processing file 14/bits/random.tcc
+  lines=40 hit=40 functions=3 hit=3
+Processing file 14/bits/random.h
+  lines=8 hit=8 functions=5 hit=5
+Processing file 14/bits/std_thread.h
+  lines=25 hit=23 functions=17 hit=16
+Processing file 14/bits/std_mutex.h
+  lines=14 hit=13 functions=6 hit=6
+Processing file 14/bits/stl_algobase.h
+  lines=94 hit=70 functions=121 hit=30
+Processing file 14/bits/stl_algo.h
+  lines=85 hit=34 functions=12 hit=6
+Processing file 14/bits/stl_construct.h
+  lines=14 hit=14 functions=32 hit=23
+Processing file 14/bits/stl_bvector.h
+  lines=186 hit=109 functions=54 hit=36
+Processing file 14/bits/stl_function.h
+  lines=4 hit=4 functions=4 hit=4
+Processing file 14/bits/stl_deque.h
+  lines=147 hit=133 functions=73 hit=67
+Processing file 14/bits/stl_iterator.h
+  lines=26 hit=24 functions=58 hit=44
+Processing file 14/bits/stl_heap.h
+  lines=48 hit=0 functions=5 hit=0
+Processing file 14/bits/stl_iterator_base_types.h
+  lines=1 hit=1
+Processing file 14/bits/stl_iterator_base_funcs.h
+  lines=3 hit=3
+Processing file 14/bits/stl_queue.h
+  lines=11 hit=11 functions=10 hit=10
+Processing file 14/bits/stl_pair.h
+  lines=10 hit=10 functions=13 hit=12
+Processing file 14/bits/stl_stack.h
+  lines=11 hit=11 functions=5 hit=5
+Processing file 14/bits/stl_set.h
+  lines=17 hit=17 functions=13 hit=13
+Processing file 14/bits/stl_uninitialized.h
+  lines=69 hit=63 functions=49 hit=38
+Processing file 14/bits/stl_tree.h
+  lines=206 hit=200 functions=98 hit=98
+Processing file 14/bits/uniform_int_dist.h
+  lines=40 hit=29 functions=7 hit=7
+Processing file 14/bits/stl_vector.h
+  lines=132 hit=119 functions=154 hit=144
+Processing file 14/bits/unique_ptr.h
+  lines=40 hit=36 functions=69 hit=60
+Processing file 14/bits/unique_lock.h
+  lines=24 hit=21 functions=4 hit=4
+Processing file 14/condition_variable
+  lines=4 hit=4 functions=1 hit=1
+Processing file 14/bits/vector.tcc
+  lines=86 hit=49 functions=18 hit=16
+Processing file 14/ext/alloc_traits.h
+  lines=3 hit=2
+Processing file 14/ext/aligned_buffer.h
+  lines=8 hit=8 functions=8 hit=8
+Processing file 14/new
+  lines=3 hit=2 functions=2 hit=1
+Processing file 14/ext/string_conversions.h
+  lines=17 hit=14 functions=4 hit=4
+Processing file /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h
+  lines=3 hit=1
+Processing file 14/tuple
+  lines=87 hit=75 functions=168 hit=153
+Processing file /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h
+  lines=10 hit=8 functions=3 hit=3
+Overall coverage rate:
+  source files: 61
+  lines.......: 79.6% (1711 of 2149 lines)
+  functions...: 80.7% (994 of 1231 functions)
+Message summary:
+  no messages were reported
+Coverage report generated: ./coverage/index.html

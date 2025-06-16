@@ -1,4 +1,4 @@
-# Graph Algorithms Pipeline Server
+# Graph Algorithm Server
 
 This project implements a multithreaded C++ TCP server that allows users to input or generate graphs and compute multiple graph algorithms in parallel using the pipeline pattern.
 
@@ -18,13 +18,14 @@ This project implements a multithreaded C++ TCP server that allows users to inpu
 
 - **Client-Server Communication**: The server listens on port `8080` and interacts with clients via sockets.
 - **Concurrency**: Each algorithm runs on a separate thread and results are sent back once all computations are complete.
-- **Graph Representation**: Uses an adjacency list implemented without STL, in a custom `Graph` class.
+- **Graph Representation**: Uses an adjacency list implemented with STL (vector), encapsulated in a custom Graph class.
 - **Algorithm Factory**: Implements a factory pattern to instantiate different algorithms dynamically.
+- **Strategy Pattern**: Each algorithm follows the Strategy interface, allowing interchangeable execution logic.
 
 ## Input Formats
 
 ### Manual Graph Entry
-The client must send:
+The client provides:
 ```
 vertices edges directed_flag(0/1)
 u1 v1
@@ -33,7 +34,7 @@ u2 v2
 ```
 
 ### Random Graph Generation
-The client chooses option `2` and provides:
+The client provides:
 ```
 vertices edges seed directed_flag(0/1)
 ```
@@ -41,7 +42,7 @@ vertices edges seed directed_flag(0/1)
 ## Build Instructions
 
 ```bash
-make
+make server
 ```
 
 ## Run Server
