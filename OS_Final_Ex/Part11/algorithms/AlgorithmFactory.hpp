@@ -2,7 +2,6 @@
 #define ALGORITHM_FACTORY_HPP
 
 #include "AlgorithmStrategy.hpp"
-#include "EulerianAlgorithm.hpp"
 #include "MSTAlgorithm.hpp"
 #include "SCCAlgorithm.hpp"
 #include "CliqueAlgorithm.hpp"

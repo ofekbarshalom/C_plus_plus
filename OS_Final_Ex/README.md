@@ -1,1 +1,103 @@
-sup
+# Graph Algorithms Pipeline Server
+
+This project implements a multithreaded C++ TCP server that allows users to input or generate graphs and compute multiple graph algorithms in parallel using the pipeline pattern.
+
+## Features
+
+- TCP server that accepts client connections.
+- Graph input: 
+  - Manual entry
+  - Random generation
+- Parallel execution of 4 graph algorithms:
+  - Minimum Spanning Tree (MST)
+  - Strongly Connected Components (SCC)
+  - Maximum Clique
+  - Maximum Flow (Edmonds-Karp)
+
+## Architecture
+
+- **Client-Server Communication**: The server listens on port `8080` and interacts with clients via sockets.
+- **Concurrency**: Each algorithm runs on a separate thread and results are sent back once all computations are complete.
+- **Graph Representation**: Uses an adjacency list implemented without STL, in a custom `Graph` class.
+- **Algorithm Factory**: Implements a factory pattern to instantiate different algorithms dynamically.
+
+## Input Formats
+
+### Manual Graph Entry
+The client must send:
+```
+vertices edges directed_flag(0/1)
+u1 v1
+u2 v2
+...
+```
+
+### Random Graph Generation
+The client chooses option `2` and provides:
+```
+vertices edges seed directed_flag(0/1)
+```
+
+## Build Instructions
+
+```bash
+make
+```
+
+## Run Server
+
+```bash
+./server_exec
+```
+
+## Run Client (example via netcat)
+
+```bash
+nc localhost 8080
+```
+
+## Example Session
+
+```
+Choose input mode:
+1 - Enter graph manually
+2 - Generate random graph
+0 - Exit
+2
+Enter: vertices edges seed directed(0=dir,1=undir):
+6 7 42 1
+```
+
+## Output Example
+
+```
+MST Weight: 13
+SCC Components (3):
+{ 0 1 }
+{ 2 }
+{ 3 4 5 }
+Max Clique (3): 0 2 4 
+Max Flow: 9
+```
+
+## File Structure
+
+- `Server.cpp`: Main server loop and client handler logic.
+- `Graph.cpp/.hpp`: Graph representation and adjacency list structure.
+- `GraphAlgorithms.cpp/.hpp`: Contains implementations for MST, SCC, Clique, MaxFlow, Eulerian path.
+- `AlgorithmFactory.*`: Factory pattern to select the correct algorithm.
+- `main.cpp`: Optional standalone program to test graph generation and Eulerian circuit detection.
+
+## Dependencies
+
+- C++20
+- POSIX socket API (Linux)
+- `make`
+
+## Authors
+
+- Developed as part of the final OS course project.
+
+## License
+
+MIT License

@@ -13,7 +13,6 @@ HDR = $(CORE_DIR)/Graph.hpp \
       $(CORE_DIR)/GraphAlgorithms.hpp \
       $(ALG_DIR)/AlgorithmStrategy.hpp \
       $(ALG_DIR)/AlgorithmFactory.hpp \
-      $(ALG_DIR)/EulerianAlgorithm.hpp \
       $(ALG_DIR)/MSTAlgorithm.hpp \
       $(ALG_DIR)/SCCAlgorithm.hpp \
       $(ALG_DIR)/CliqueAlgorithm.hpp \

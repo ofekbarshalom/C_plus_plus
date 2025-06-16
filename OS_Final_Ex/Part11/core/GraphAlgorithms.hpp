@@ -8,9 +8,6 @@ using namespace std;
 
 namespace GraphAlgo {
 
-    bool isEulerian(const Graph& g);
-    vector<int> findEulerianCircuit(const Graph& g);
-
     // ====== 4 Algorithms ======
     int findMSTWeight(const Graph& graph);              // Finding MST weight
     vector<vector<int>> findSCC(const Graph& graph);    // Finding SCC on the graph
